@@ -21,7 +21,7 @@ timezone:
 
 title: ***Waidroc                          # the main title
 
-tagline: ASIR | CETI | eJPT | CTF Player   # it will display as the sub-title
+tagline: ASIR CETI eJPT CTF Player   # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
   Blog personal centrado en la ciberseguridad, donde podrás consultar definiciones, casos prácticos y Wireups de retos.
