@@ -24,7 +24,7 @@ title: Waidroc                          # the main title
 tagline: ASIR  |  CETI  |  eJPT  |  CTF Player   # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
-  Test
+  "Let´s learn cibersecurity together!."
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
 url: ''
