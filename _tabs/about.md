@@ -10,7 +10,7 @@ Este blog estará dedicado entre otras cosas, a compartir conocimientos en el ca
 
 ## Sobre mi:
 
-Me consiero un entusiasta de la seguridad informática, intentando siempre aprender y descubrir cosas nuevas diariamente. Aparte de lo profesional, también tengo la ciberseguridad como hobby, teniendo como objetivos realizar retos de cualquier comunidad o realizando cualquier CTF (OSINT, vulnerar máquinas virtuales, forense...).
+Me consiero un entusiasta de la seguridad informática, intentando siempre aprender y descubrir cosas nuevas diariamente. Aparte de lo profesional, también tengo la ciberseguridad como hobby, teniendo como objetivos realizar retos de cualquier comunidad o realizando cualquier CTF.
 
 
 Si crees que en algún post hay algún error, no se entiende bien lo que intento explicar o te gustaría colaborar conmigo en el desarrollo de un proyecto por favor mandame un mail a [este correo](mailto:waidroc@protonmail.com)
