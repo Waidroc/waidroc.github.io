@@ -17,4 +17,4 @@ Si crees que en algún post hay algún error, no se entiende bien lo que intento
 
 
 
-<center> <script src="https://tryhackme.com/badge/1208071"></script> </center>
+<script src="https://tryhackme.com/badge/1208071"></script>
