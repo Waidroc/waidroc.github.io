@@ -5,3 +5,5 @@ categories: [Writeup]
 tags: [writeup, ctf, reconocimiento, stego, OSINT]    
 author: Waidroc
 ---
+
+XXXXXXXXXXXXXXXXXXXXXXXX.
