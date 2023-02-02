@@ -1,6 +1,6 @@
 ---
 title: WriteUp - NightCityCTF
-date: 2023-02-02 13:00:00
+date: 2023-02-07 9:00:00
 categories: [Writeup]
 tags: [writeup, ctf, reconocimiento, stego, OSINT]    
 author: "Waidroc"
