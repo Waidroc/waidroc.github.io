@@ -19,3 +19,7 @@ Todos los recursos son totalmente públicos y descargables, incluyendo en el mis
 Dicho esto, vamos a las consideraciones previas que tenemos que realizar para proceder a la resolución del CTF.
 
 <h2> Consideraciones previas </h2>
+
+Para poder realizar este CTF, debemos de descargar la imagen de la MV (bit.ly/3RtWAV7) e importarla en VirtualBox.
+
+Una vez importada, debemos de meterla en la misma Red Lan que nuestra máquina atacante, en nuestro caso, utilizaremos Kali Linux, para que ambas se puedan comunicar entre sí.
