@@ -22,7 +22,7 @@ Dicho esto, vamos a las consideraciones previas que tenemos que realizar para pr
 
 Para poder realizar este CTF, debemos de descargar la imagen de la MV (bit.ly/3RtWAV7) e importarla en VirtualBox.
 
-Una vez importada, debemos de meterla en la misma Red Lan que nuestra máquina atacante, en nuestro caso, utilizaremos Kali Linux, para que ambas se puedan comunicar entre sí.
+Una vez importada, debemos de meterla en la misma Red NAT que nuestra máquina atacante, en nuestro caso, utilizaremos Kali Linux, para que ambas se puedan comunicar entre sí.
 
 ![RedNat](/assets/img/2023-02-02/1.JPG)
 ![RedNat](/assets/img/2023-02-02/2.JPG)
