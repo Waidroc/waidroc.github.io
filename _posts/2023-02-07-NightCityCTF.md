@@ -85,6 +85,10 @@ Una vez importada, debemos de meterla en la misma Red NAT que nuestra máquina a
 
 ![stegsolve2](/assets/img/2023-02-17/stegsolve2.png)
 
+![aperisolve](/assets/img/2023-02-17/aperisolve.png)
+
+![aperisolve2](/assets/img/2023-02-17/aperisolve2.png)
+
 ![passwd](/assets/img/2023-02-17/passwd.png)
 
 ![homejoker](/assets/img/2023-02-17/homejoker.PNG)
