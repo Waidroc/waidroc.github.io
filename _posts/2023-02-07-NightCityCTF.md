@@ -97,5 +97,4 @@ Una vez importada, debemos de meterla en la misma Red NAT que nuestra máquina a
 
 ![history](/assets/img/2023-02-17/alternativasHistory.png)
 
-
-
+holaholaholaholaaaa
