@@ -17,7 +17,7 @@ Hola a todos! Antes de comenzar con la resolución de la máquina virtual, me gu
 
 ![Cartel](/assets/img/2023-02-17/cartel_taller_ciber.jpg)
 
-Además de pertenecer al taller anteriormente mencionado, el CTF fue publicado como reto, con un premio bastante jugoso (`1 x curso OSINT en Linux en Cyber Hunter Academy y 1 x cena para 2 personas en el restaurante Figón del Huecar, Cuenca`). El ganador fue `@90n20sec`.
+Además de pertenecer al taller anteriormente mencionado, el CTF fue publicado como reto, con un premio bastante jugoso: `1 x curso OSINT en Linux en Cyber Hunter Academy y 1 x cena para 2 personas en el restaurante Figón del Huecar, Cuenca`. El ganador fue `@90n20sec`.
 
 ![Twitter](/assets/img/2023-02-17/tweet.jpg)
 
