@@ -1,6 +1,6 @@
 ---
 title: WriteUp - NightCityCTF
-date: 2023-02-07 9:00:00
+date: 2023-02-05 9:00:00
 categories: [Writeup]
 tags: [writeup, ctf, reconocimiento, stego, OSINT]    
 author: "Waidroc"
@@ -267,10 +267,10 @@ Espero que hayáis disfrutado y aprendido un montón y que este taller haya sido
 
 Como siempre, cualquier duda y petición al respecto, podéis contactar conmigo a través del e-mail waidroc@protonmail.com
 
-> Remarcar que en las diapositivas del PowerPoint (https://docs.google.com/presentation/d/1l-HuyGiftX1RhVKUf2-HRjsnHAvhX5QKidi8ZxG8Dd0/edit?usp=sharing) descargable está todo mejor explicado, a un nivel un poco más básico, no obviando alguna información que si lo ha sido en este post. Si te ha costado seguir un poco esta resolución, ¡échale un vistazo a la presentación!
-{: .prompt-info}
+Remarcar que en las diapositivas del [`PowerPoint`](https://docs.google.com/presentation/d/1l-HuyGiftX1RhVKUf2-HRjsnHAvhX5QKidi8ZxG8Dd0/edit?usp=sharing) descargable está todo mejor explicado, a un nivel un poco más básico, no obviando alguna información que si lo ha sido en este post. Si te ha costado seguir un poco esta resolución, ¡échale un vistazo a la presentación!
 
 Muchas gracías por leer 
 Waidroc
+
 
 
