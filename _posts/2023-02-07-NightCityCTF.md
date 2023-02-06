@@ -109,15 +109,37 @@ sudo wfuzz -c -t 200 -w /usr/share/seclists/Discovery/Web-Content/directory-list
 
 ![wfuzz](/assets/img/2023-02-17/wfuzz.png)
 
+Una alternativa a la herramienta nombrada y usada anteriormente es el propio nmap, el cual cuenta cno un script que viene en la librería de scripts que trae preinstalada el propio software, llamado http-enum.
+
+```bash
+sudo nmap -p80 --script=http-enum 10.0.2.4
+```
+
 ![nmapdirectorios](/assets/img/2023-02-17/nmapdirectorios.png)
+
+Ahora, vamos a indagar en los ficheros y directorios ocultos encontrados en el paso anterior.
+
+En el fichero robots.txt nos muestra aparentemente una pista para proseguir con la resolución de la máquina.
 
 ![robots](/assets/img/2023-02-17/robotstxt.png)
 
+Como siempre, vamos a descargarnos todos los ficheros que veamos interesantes, porque no sabremos si van a seguir disponibles en un futuro o no, además de poder analizar sus metadatos y posibles elementos ocultos.
+
+```bash
+wget http://nightcity.ctf/robots.txt
+```
+
 ![drobots](/assets/img/2023-02-17/descargarobotstxt.png)
 
-![robin](/assets/img/2023-02-17/robin.png)
+El fichero robin parece no tener mucho sentido, vamos a proseguir con el análisis de los demás ficheros y directorios y a tenerlo en cuenta para si en un futuro podremos hacer uso de él.
+
+```bash
+wget http://nightcity.ctf/robin
+```
 
 ![robinw](/assets/img/2023-02-17/robinweb.png)
+
+![robin](/assets/img/2023-02-17/robin.png)
 
 ![dimagenes](/assets/img/2023-02-17/descargaimagenes.png)
 
