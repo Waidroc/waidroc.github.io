@@ -15,11 +15,11 @@ author: "Waidroc"
 
 Hola a todos! Antes de comenzar con la resolución de la máquina virtual, me gustaría comentar que dicha máquina pertenece a un taller de ciberseguridad realizado en Junio de 2022 en el instituto IES Pedro Mercedes, teniendo como asistentes cualquier interesado sobre la materia, entre ellos miembros de los cuerpos de Policía Local y Guardia Civil (Equipo @) de Cuenca.
 
-La máquina fue elaborada por mi y mi compañero David Valero (@cillo31) y nos centramos en realizar un servidor muy vulnerable con una fácil resolución, basándose principalmente en el reconocimiento, esteganografía y tocando muy por encima el OSINT.
+La máquina fue elaborada por mi y mi compañero `David Valero` (@cillo31) y nos centramos en realizar un servidor muy vulnerable con una fácil resolución, basándose principalmente en el reconocimiento, esteganografía y tocando muy por encima el OSINT.
 
 Consta de una máquina de nivel básico, estupenda para comenzar en el mundillo de los CTF, la cual desde mi punto de vista veo genial para pasar un buen rato, además de aprender una serie de técnicas y conceptos que serán muy valiosos para el futuro.
 
-Todos los recursos son totalmente públicos y descargables, incluyendo en el mismo repositorio los enlaces de descarga de la máquina virtual (.ova) y a su vez la presentación en PowerPoint con su resolución explicada de una forma más amena, para poder ser presentada en público en cualquier momento (recurso perfecto para docentes).
+Todos los recursos son totalmente públicos y descargables, incluyendo en el mismo repositorio los enlaces de descarga de la máquina virtual (.ova) y a su vez la presentación en `PowerPoint` con su resolución explicada de una forma más amena, para poder ser presentada en público en cualquier momento (recurso perfecto para docentes).
 
 > Descarga del repositorio [`NightCityCTF`](https://github.com/Waidroc/NightCityCTF)
 {: .prompt-tip}
@@ -28,16 +28,16 @@ Dicho esto, vamos a las consideraciones previas que tenemos que realizar para pr
 
 <h2> Consideraciones previas </h2> 
 
-Para poder realizar este CTF, debemos de descargar la imagen de la MV e importarla en VirtualBox.
+Para poder realizar este CTF, debemos de descargar la imagen de la MV e `importarla` en VirtualBox.
 
-Una vez importada, debemos de meterla en la misma Red NAT que nuestra máquina atacante, en nuestro caso, utilizaremos Kali Linux, para que ambas se puedan comunicar entre sí.
+Una vez importada, debemos de meterla en la misma `Red NAT` que nuestra máquina atacante, en nuestro caso, utilizaremos Kali Linux, para que ambas se puedan comunicar entre sí.
 
 ![RedNat](/assets/img/2023-02-17/1.JPG)
 ![RedNat](/assets/img/2023-02-17/2.JPG)
 
 <h2> Resolución </h2>
 
-Lo primero de todo, es ver que rango de IPs tiene asignado la interfaz de la red NAT para posteriormente hacer un escaneo a dicha red y descubrir que IP tiene asignada nuestra máquina víctima.
+Lo primero de todo, es ver que rango de IPs tiene asignado la interfaz de la red NAT para posteriormente hacer un escaneo a dicha red y descubrir que `IP` tiene asignada nuestra máquina víctima.
 
 ```bash
 ifconfig
@@ -46,15 +46,15 @@ sudo nmap --min-rate 5000 -sS 10.0.2.0/24
 
 ![descubrirIP](/assets/img/2023-02-17/reconocimiento.png)
 
-Cuando tengamos localizada la IP víctima, debemos de comprobar bajo que Sistema Operativo está funcionando el servidor vulnerable. Podemos identificarlo gracias a su TTL (Time To Live/Tiempo De Vida), siendo este 64. Puede saberse porque ese valor de TTL es asignado a los sistemas que trabajan con Linux, siendo a su vez el TTL con valor 128 perteneciente a las máquinas Windows. Debemos de tener en cuenta que no siempre nos reportan esos valores exactos, pueden ser inferiores debido a los saltos intermediarios que hacen los paquetes hasta llegar a su destino pero, en este caso, es exacto debido a que no hay intermediarios entre la máquina víctima y nuestra máquina atacante.
+Cuando tengamos localizada la IP víctima, debemos de comprobar bajo que `Sistema Operativo` está funcionando el servidor vulnerable. Podemos identificarlo gracias a su `TTL` (Time To Live/Tiempo De Vida), siendo este `64`. Puede saberse porque ese valor de TTL es asignado a los sistemas que trabajan con Linux, siendo a su vez el TTL con valor 128 perteneciente a las máquinas Windows. Debemos de tener en cuenta que no siempre nos reportan esos valores exactos, pueden ser inferiores debido a los saltos intermediarios que hacen los paquetes hasta llegar a su destino pero, en este caso, es exacto debido a que no hay intermediarios entre la máquina víctima y nuestra máquina atacante.
 
 ![linux](/assets/img/2023-02-17/linux.png)
 
-El siguiente paso, no es obligatorio pero si es muy aconsejable. Consta de crear un árbol de directorios de trabajo para tener todo bien organizado. En mi caso, siempre tengo un directorio para los ficheros de volcado del reconocimiento, otro directorio para scripts y programas que se usarán y otro con todo los ficheros que considero importantes y que pueden usarse en un futuro, además de crear en el mismo ficheros con información que se va recabando (notas, credenciales...).
+El siguiente paso, no es obligatorio pero si es muy aconsejable. Consta de crear un `árbol de directorios de trabajo` para tener todo bien organizado. En mi caso, siempre tengo un directorio para los ficheros de volcado del reconocimiento, otro directorio para scripts y programas que se usarán y otro con todo los ficheros que considero importantes y que pueden usarse en un futuro, además de crear en el mismo ficheros con información que se va recabando (notas, credenciales...).
 
 ![directorioTrabajo](/assets/img/2023-02-17/directorioTrabajo.png)
 
-Una vez tenemos bien localizada la máquina víctima y habiando localizado y escaneado anteriormente que servicios y puertos están abiertos en el servidor, vamos a lanzar nmap para ver que versiones tiene el software que nos está brindando (sV), acompañado de una serie de scripts básicos que nos ayudarán a encontrar vulnerabilidades (sC)
+Una vez tenemos bien localizada la máquina víctima y habiando localizado y escaneado anteriormente que servicios y puertos están abiertos en el servidor, vamos a lanzar `nmap` para ver que versiones tiene el software que nos está brindando (sV), acompañado de una serie de scripts básicos que nos ayudarán a encontrar vulnerabilidades (sC)
 
 ```bash
 sudo nmap -p21,22,80 -sCV 10.0.2.4 -oN nightCityVulns
@@ -62,7 +62,7 @@ sudo nmap -p21,22,80 -sCV 10.0.2.4 -oN nightCityVulns
 
 ![nmapVuln](/assets/img/2023-02-17/nmapVuln.png)
 
-Creamos el directorio contenido el cual, como indicamos anteriormente, nos servirá para alojar todos los documentos recabados que consideremos interesantes sobre nuestra víctima.
+Creamos el directorio `contenido` el cual, como indicamos anteriormente, nos servirá para alojar todos los documentos recabados que consideremos interesantes sobre nuestra víctima.
 
 ![directorioContenido](/assets/img/2023-02-17/carpetacontenido.png)
 
