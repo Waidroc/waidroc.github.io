@@ -6,6 +6,11 @@ tags: [writeup, ctf, reconocimiento, stego, OSINT]
 author: "Waidroc"
 ---
 
+
+![Portada](/assets/img/2023-02-17/portada.jpg)
+
+
+
 <h2> Introducción </h2>
 
 Hola a todos! Antes de comenzar con la resolución de la máquina virtual, me gustaría comentar que dicha máquina pertenece a un taller de ciberseguridad realizado en Junio de 2022 en el instituto IES Pedro Mercedes, teniendo como asistentes cualquier interesado sobre la materia, entre ellos miembros de los cuerpos de Policía Local y Guardia Civil (Equipo @) de Cuenca.
