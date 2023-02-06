@@ -15,7 +15,11 @@ author: "Waidroc"
 
 Hola a todos! Antes de comenzar con la resolución de la máquina virtual, me gustaría comentar que dicha máquina pertenece a un taller de ciberseguridad realizado en Junio de 2022 en el instituto IES Pedro Mercedes, teniendo como asistentes cualquier interesado sobre la materia, entre ellos miembros de los cuerpos de Policía Local y Guardia Civil (Equipo @) de Cuenca.
 
+![Cartel](/assets/img/2023-02-17/cartel_taller_ciber.jpg)
+
 Además de pertenecer al taller anteriormente mencionado, el CTF fue publicado como reto, con un premio bastante jugoso (`1 x curso OSINT en Linux en Cyber Hunter Academy y 1 x cena para 2 personas en el restaurante Figón del Huecar, Cuenca`). El ganador fue `@90n20sec`.
+
+![Twitter](/assets/img/2023-02-17/tweet.jpg)
 
 La máquina fue elaborada por mi y mi compañero `David Valero` (@cillo31) y nos centramos en realizar un servidor muy vulnerable con una fácil resolución, basándose principalmente en el reconocimiento, esteganografía y tocando muy por encima el OSINT.
 
