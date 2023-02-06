@@ -29,9 +29,16 @@ Una vez importada, debemos de meterla en la misma Red NAT que nuestra máquina a
 
 <h2> Resolución </h2>
 
-Lo primero de todo, es hacer un escaneo a la red para descubrir que IP tiene asignada nuestra máquina víctima.
+Lo primero de todo, es ver que rango de IPs tiene asignado la interfaz de la red NAT para posteriormente hacer un escaneo a dicha red y descubrir que IP tiene asignada nuestra máquina víctima.
+
+```bash
+ifconfig
+sudo nmap --min-rate 5000 -sS 10.0.2.0/24
+```
 
 ![descubrirIP](/assets/img/2023-02-17/reconocimiento.png)
+
+Cuando tengamos localizada la IP víctima, debemos de comprobar bajo que Sistema Operativo está funcionando el servidor vulnerable. Podemos identificarlo gracias a su TTL (Time To Live/Tiempo De Vida), siendo este 64. Puede saberse porque ese valor de TTL es asignado a los sistemas que trabajan con Linux, siendo a su vez el TTL con valor 128 perteneciente a las máquinas Windows. Debemos de tener en cuenta que no siempre nos reportan esos valores exactos, pueden ser inferiores debido a los saltos intermediarios que hacen los paquetes hasta llegar a su destino pero, en este caso, es exacto debido a que no hay intermediarios entre la máquina víctima y nuestra máquina atacante.
 
 ![linux](/assets/img/2023-02-17/linux.png)
 
