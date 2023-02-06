@@ -230,7 +230,8 @@ Seleccionamos la imagen y la analizamos. Encontramos en la parte izquierda un te
 
 ![stegsolve2](/assets/img/2023-02-17/stegsolve2.png)
 
-Haciendo un pequeño inciso, os recomiendo esta herramienta online llamada [`Aperisolve`](https://www.aperisolve.com/), tratándose de un todo en uno para análisis de esteganografía. También nos aplica la técnica que acabamos de realizar con stegsolve, además de metadatos y otra información bastante útil. Os recomiendo que os paséis por ella e intentéis testearla!
+> Haciendo un pequeño inciso, os recomiendo esta herramienta online llamada [`Aperisolve`](https://www.aperisolve.com/), tratándose de un todo en uno para análisis de esteganografía. También nos aplica la técnica que acabamos de realizar con stegsolve, además de metadatos y otra información bastante útil. Os recomiendo que os paséis por ella e intentéis testearla!
+{: .prompt-tip}
 
 
 ![aperisolve](/assets/img/2023-02-17/aperisolve.png)
