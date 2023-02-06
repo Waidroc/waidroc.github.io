@@ -141,21 +141,58 @@ wget http://nightcity.ctf/robin
 
 ![robin](/assets/img/2023-02-17/robin.png)
 
+Ahora, una vez analizado el directorio secret y habiendo comprobado que se tratan de imágenes (.jpg), vamos a crear el directorio imagenes, dentro de contenido, para tener todo bien clasificado. Las descargamos en nuestro equipo para un posterior análisis de las mismas.
+
+```bash
+mkdir imagenes
+cd imagenes
+wget http://nightcity.ctf/secret/most-wanted.jpg
+wget http://nightcity.ctf/secret/some-light.jpg
+wget http://nightcity.ctf/secret/veryImportant.jpg
+```
+
 ![dimagenes](/assets/img/2023-02-17/descargaimagenes.png)
+
+Vamos a proseguir con el análisis de los metadatos de las imágenes y, en una de ellas, vemos algo destacable (campos adicionales con un información relevante).
+De entre todos ellos, podemos destacar unas coordenadas, las cuales vamos a analizar detenidamente e intentar geolocalizarlas. Para este paso, hemos utilizado exiftool, también viene preinstalada en Kali Linux.
+
+```bash
+exiftool some-light.jpg
+```
 
 ![exiftool](/assets/img/2023-02-17/exiftool.png)
 
+Abrimos google maps e introducimos en el buscador la coordenadas (hay que convertirlas para que realice dicha búsqueda). Podemos visualizar el logo de Batman, como siempre, creamos un fichero y apuntamos todo lo relevante para la resolución.
+
 ![map](/assets/img/2023-02-17/osint.png)
+
+El siguiente paso es crear un diccionario con el fichero oculto robin que encontramos anteriormente, el cual como no tenía mucho sentido, podría servirnos como fuente de diccionario para un posterior ataque por fuerza bruta. Para ello usaremos la herramienta cewl, la cual viene también preinstalada en Kali Linux.
+
+```bash
+cewl http://nightcity.ctf/robin > robin.txt
+wc -l robin.txt
+```
+Usamos wc -l para comprobar cuantas palabras contiene el diccionario. 
 
 ![cewlrobin](/assets/img/2023-02-17/diccionariorobin.png)
 
+Ahora, vamos a usar stegcracker para intentar sacar por fuerza bruta los ficheros ocultos e incrustados a otros ficheros, en este caso, las imágenes. Esta herramienta se encarga de realizar un ataque por un diccionario seleccionado, encontrar cual es la contraseña correcta (si está en el diccionario) y extraer todo el contenido oculto en el contenedor (imagen).
+
+```bash
+stegcracker most-wanted.jpg robin.txt
+```
+
 ![japon](/assets/img/2023-02-17/japon.png)
+
+El fichero el cual contenía información oculta era most-wanted.jpg, el cual nos vuelca una cadena, aparentemente en base64. Vamos a decodificar la cadena y apuntar el resultado en un fichero con credenciales ya que parece ser la credencial de un posible usuario batman.
 
 ![passBatman](/assets/img/2023-02-17/contraseñabatman.png)
 
 ![dCredenciales](/assets/img/2023-02-17/directoriocredencialespng.PNG)
 
 ![fCredenciales](/assets/img/2023-02-17/archivocredenciales.png)
+
+Vamos a acceder al servidor por el servicio SSH y... ¡¿Estamos dentro!!
 
 ![acceso](/assets/img/2023-02-17/acceso.png)
 
