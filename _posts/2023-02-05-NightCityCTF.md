@@ -21,6 +21,9 @@ Consta de una máquina de nivel básico, estupenda para comenzar en el mundillo 
 
 Todos los recursos son totalmente públicos y descargables, incluyendo en el mismo repositorio los enlaces de descarga de la máquina virtual (.ova) y a su vez la presentación en PowerPoint con su resolución explicada de una forma más amena, para poder ser presentada en público en cualquier momento (recurso perfecto para docentes).
 
+> Descarga del repositorio [`NightCityCTF`](https://github.com/Waidroc/NightCityCTF)
+{: .prompt-tip}
+
 Dicho esto, vamos a las consideraciones previas que tenemos que realizar para proceder a la resolución del CTF.
 
 <h2> Consideraciones previas </h2> 
