@@ -278,8 +278,8 @@ Remarcar que en las diapositivas del [`PowerPoint`](https://docs.google.com/pres
 
 Como siempre, cualquier duda y petición al respecto, podéis contactar conmigo a través del e-mail waidroc@protonmail.com
 
-`Muchas gracías por leer 
-Waidroc`
+`Muchas gracías por leer,` 
+`Waidroc`
 
 
 
