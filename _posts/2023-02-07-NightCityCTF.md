@@ -42,21 +42,70 @@ Cuando tengamos localizada la IP víctima, debemos de comprobar bajo que Sistema
 
 ![linux](/assets/img/2023-02-17/linux.png)
 
+El siguiente paso, no es obligatorio pero si es muy aconsejable. Consta de crear un árbol de directorios de trabajo para tener todo bien organizado. En mi caso, siempre tengo un directorio para los ficheros de volcado del reconocimiento, otro directorio para scripts y programas que se usarán y otro con todo los ficheros que considero importantes y que pueden usarse en un futuro, además de crear en el mismo ficheros con información que se va recabando (notas, credenciales...).
+
 ![directorioTrabajo](/assets/img/2023-02-17/directorioTrabajo.png)
+
+Una vez tenemos bien localizada la máquina víctima y habiando localizado y escaneado anteriormente que servicios y puertos están abiertos en el servidor, vamos a lanzar nmap para ver que versiones tiene el software que nos está brindando (sV), acompañado de una serie de scripts básicos que nos ayudarán a encontrar vulnerabilidades (sC)
+
+```bash
+sudo nmap -p21,22,80 -sCV 10.0.2.4 -oN nightCityVulns
+```
 
 ![nmapVuln](/assets/img/2023-02-17/nmapVuln.png)
 
+Creamos el directorio contenido el cual, como indicamos anteriormente, nos servirá para alojar todos los documentos recabados que consideremos interesantes sobre nuestra víctima.
+
 ![directorioContenido](/assets/img/2023-02-17/carpetacontenido.png)
+
+Ahora, vamos a comenzar a observar, descubrir y testear cada uno de los servicios que tenemos disponibles, sobre todo, el servicio FTP y HTTP.
+Comenzamos con el servicio FTP, el cual, vamos a comprobar que tenga el logueo del usuario anonymous activo, el cual viene por defecto activado y sin contraseña.
+Una vez dentro, podemos observar que contiene un directorio llamado reminder y a su vez, dentro de éñ, un fichero llamado reminder.txt, vamos a descargarlo y analizarlo en nuestra máquina.
+
+```bash
+ftp anonymous@10.0.2.4
+dir
+cd reminder
+dir
+get reminder.txt
+exit
+```
 
 ![reminder](/assets/img/2023-02-17/descargarremindertxt.png)
 
+Vamos a visualizar que nos muestra el fichero de texto que acabamos de descargar.
+
+```bash
+cat reminder.txt
+```
+
 ![reminder2](/assets/img/2023-02-17/reminder.png)
 
+Parece que ya hemos sacado toda la información que nos brindaba el servidor FTP asique, vamos a proseguir con el análisis del servicio HTTP.
+
+Lo primero de todo es añadir, por comodidad ya que, en este caso no se está aplicando un Virtual Hosting, la IP del servidor con su DNS, el cual le asignaremos nightcity.ctf, al fichero /etc/hosts
+
+```bash
+nano /etc/hosts
+10.0.2.4  nightcity.ctf
+```
+
 ![hosts](/assets/img/2023-02-17/etchosts.png)
+
+Ingresamos en la web vía navegador y hacemos un análisis general para ver si hay algo oculto (abrimos el inspector de elementos en busca de comentarios, código hardcodeado...) pero no se ve nada aparentemente.
 
 ![blog](/assets/img/2023-02-17/blog.png)
 
 ![commentsweb](/assets/img/2023-02-17/commentsweb.png)
+
+Como no hemos visto nada, vamos a hacer un descubrimiento de directorios no indexados con la herramienta wfuzz, la cual viene preinstalada en nuestra máquina Kali Linux.
+
+```bash
+sudo wfuzz -c -t 200 -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt
+```
+
+> Hay que tener en cuenta que el diccionario que he usado es el de SecLists (https://github.com/danielmiessler/SecLists) pero tambien viene preinstalado con el diccionario de dirbuster en Kali Linux (/usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt. De todos modos, es muy aconsejable tener en nuestra máquina ese repositorio de diccionarios, ya que nos trae diversos ficheros muy interesantes que nos podrán servir para distintas utilidades (ataques de fuerza bruta, fuzzing...)
+{: .prompt-info}
 
 ![wfuzz](/assets/img/2023-02-17/wfuzz.png)
 
