@@ -1,5 +1,5 @@
 ---
-title: WriteUp - NightCityCTF
+title: Writeup - NightCityCTF
 date: 2023-02-05 9:00:00
 categories: [Writeup]
 tags: [writeup, ctf, reconocimiento, stego, OSINT]    
