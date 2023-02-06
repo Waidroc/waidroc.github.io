@@ -7,7 +7,7 @@ author: "Waidroc"
 ---
 
 
-![Portada](/assets/img/2023-02-17/portada.jpg)
+![Portada](/assets/img/2023-02-17/portadaDef.jpg)
 
 
 
