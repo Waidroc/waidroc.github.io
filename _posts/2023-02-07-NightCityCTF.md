@@ -27,6 +27,10 @@ Una vez importada, debemos de meterla en la misma Red NAT que nuestra máquina a
 ![RedNat](/assets/img/2023-02-17/1.JPG)
 ![RedNat](/assets/img/2023-02-17/2.JPG)
 
+<h2> Resolución </h2>
+
+Lo primero de todo, es hacer un escaneo a la red para descubrir que IP tiene asignada nuestra máquina víctima.
+
 ![descubrirIP](/assets/img/2023-02-17/reconocimiento.png)
 
 ![linux](/assets/img/2023-02-17/linux.png)
