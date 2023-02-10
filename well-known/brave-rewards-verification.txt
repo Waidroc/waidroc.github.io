@@ -1,0 +1,4 @@
+This is a Brave Rewards publisher verification file.
+
+Domain: waidroc.github.io
+Token: 23f38065de5ce0eb416d1be90be47ca3d0eafdb9e29a732ee2e02fe04a846fbf
