@@ -16,8 +16,9 @@ Me consiero un entusiasta de la seguridad informática, intentando siempre apren
 Si crees que en algún post hay algún error, no se entiende bien lo que intento explicar o te gustaría colaborar conmigo en el desarrollo de un proyecto por favor, mandame un mail a [este correo](mailto:waidroc@protonmail.com)
 
 
-
+<p align="center">
 <script src="https://tryhackme.com/badge/1208071"></script>
+</p>
 
 <br>
 
