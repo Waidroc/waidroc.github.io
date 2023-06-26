@@ -29,3 +29,19 @@ La teoría por sí sola no es suficiente para garantizar la seguridad. Es crucia
 ✓ **Repositorios y recursos de referencia:** Crea un repositorio interno de recursos de ciberseguridad, como guías prácticas, infografías y consejos de seguridad. Estos recursos pueden ayudar a los empleados a recordar y aplicar las mejores prácticas de seguridad en su trabajo diario. Incluye enlaces a recursos externos confiables para que los empleados puedan estar actualizados sobre las últimas amenazas y técnicas de protección.
 
 ✓ **Políticas y prácticas de seguridad claras:** Establece políticas claras de seguridad de la información y asegúrate de que todos los empleados las conozcan y las cumplan. Promueve prácticas como el bloqueo de pantallas, el uso de contraseñas fuertes y el cifrado de datos para garantizar una mayor protección de los activos digitales de la empresa.
+
+
+<h2>Simulación de Ransomware</h2>
+
+Un ejemplo claro para la concienciación, es realizar una simulación con un fichero que contenga un falso Ransomware, dirigido a los usuarios (no hay mejor aprendizaje que el hacer que "caigan en la trampa").
+
+El simulacro contará de enviar un e-mail, similar a uno legítimo, pero que contenga el fichero, comprimido en formato zip, para evadir algunos antivirus que puedan bloquear su descarga.
+
+> Descarga del falso Ransomware [`fakeRansomw`](https://github.com/Waidroc/fakeRansom)
+{: .prompt-tip}
+
+
+
+<h2> Conclusión </h2>
+
+La ciberseguridad es un desafío constante en el mundo empresarial, y la concienciación de los usuarios desempeña un papel fundamental en la protección de los activos digitales de una empresa. Mediante la implementación de programas de capacitación y sensibilización, simulaciones de ataques y el acceso a recursos prácticos, las empresas pueden fortalecer la postura de seguridad y reducir los riesgos asociados con las amenazas cibernéticas. Recordemos que la seguridad es responsabilidad de todos, y al promover una cultura de ciberseguridad, estaremos construyendo una base sólida para enfrentar los desafíos digitales en el mundo empresarial actual.
