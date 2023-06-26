@@ -1,5 +1,5 @@
 ---
-title: La Importancia de la Concienciación de los Usuarios en la Ciberseguridad Empresarial. Simulacro Ransomware
+title: La importancia de la concienciación de los usuarios en la ciberseguridad empresarial. Simulacro de Ransomware
 date: 2023-04-17 11:00:00
 categories: [Concienciacion, Ransomware]
 tags: [concienciacion, batch, ransomware, windows, usuarios, ataques, simulacro]    
@@ -11,15 +11,15 @@ author: "Waidroc"
 
 
 
-La ciberseguridad es un aspecto fundamental en cualquier empresa, pero muy a menudo subestimado, ya que no se valora en la mayoría de los casos el verdadero impacto que tiene sobre una organización. Mientras que las medidas técnicas de protección son vitales, no debemos pasar por alto el factor humano. Los usuarios son el eslabón más débil en la cadena de seguridad, y su concienciación y capacitación son cruciales para proteger los activos digitales de una organización. En este artículo, exploraremos la importancia de la concienciación de los usuarios en las empresas y enseñaremos un enfoque práctico para fomentar una buena cultura en ciberseguridad.
+La ciberseguridad es un aspecto `fundamental` en cualquier empresa, pero muy a menudo subestimado, ya que no se valora en la mayoría de los casos el verdadero impacto que tiene sobre una organización. Mientras que las medidas técnicas de protección son vitales, no debemos pasar por alto el `factor humano`. Los usuarios son el `eslabón más débil` en la cadena de seguridad, y su concienciación y capacitación son cruciales para `proteger los activos` digitales de una organización. En este artículo, exploraremos la importancia de la concienciación de los usuarios en las empresas y enseñaremos un enfoque práctico para fomentar una buena cultura en ciberseguridad.
 
-Los ciberdelincuentes están constantemente buscando nuevas formas de infiltrarse en las redes empresariales y robar información confidencial. A menudo, utilizan técnicas de ingeniería social, como el phishing, el malware y los ataques de ransomware, para explotar la falta de conocimiento y concienciación de los usuarios. Estas amenazas pueden provocar daños significativos, como pérdida de datos, tiempo de inactividad del sistema y daño a la reputación de la empresa.
+Los `ciberdelincuentes` están constantemente buscando nuevas formas de infiltrarse en las redes empresariales y robar información confidencial. A menudo, utilizan técnicas de ingeniería social, como el phishing, el malware y los ataques de ransomware, para explotar la falta de conocimiento y concienciación de los usuarios. Estas amenazas pueden provocar `daños significativos`, como pérdida de datos, tiempo de inactividad del sistema y daño a la reputación de la empresa.
 
-Sin una cultura de concienciación y capacitación en ciberseguridad, los usuarios pueden ser fácilmente engañados para que hagan clic en enlaces maliciosos, descarguen archivos infectados o compartan información confidencial. Por lo tanto, educar a los empleados sobre las mejores prácticas de seguridad y promover una mentalidad proactiva hacia la ciberseguridad se vuelve imprescindible.
+Sin una cultura de concienciación y capacitación en ciberseguridad, los usuarios pueden ser fácilmente engañados para que hagan clic en enlaces maliciosos, descarguen archivos infectados o compartan información confidencial. Por lo tanto, `educar` a los empleados sobre las mejores prácticas de seguridad y promover una mentalidad proactiva hacia la ciberseguridad se vuelve `imprescindible`.
 
 ![Estadistica](/assets/img/2023-06-27/estadistica.jpeg)
 
-La teoría por sí sola no es suficiente para garantizar la seguridad. Es crucial que las empresas brinden a sus empleados herramientas y recursos prácticos para comprender y enfrentar las amenazas en línea. Estos podrían ser algunos de los recursos para dar un enfoque práctico y así fomentar la concienciación en ciberseguridad en tu empresa u organización:
+La teoría por sí sola no es suficiente para garantizar la seguridad. Es crucial que las empresas brinden a sus empleados `herramientas y recursos prácticos` para comprender y enfrentar las amenazas en línea. Estos podrían ser algunos de los recursos para dar un enfoque práctico y así fomentar la concienciación en ciberseguridad en tu empresa u organización:
 
 ✓ **Programas de capacitación y sensibilización:** Desarrolla programas de capacitación interactivos y periódicos que aborden temas clave de ciberseguridad, como el phishing, la gestión de contraseñas, el uso seguro de dispositivos móviles y la identificación de posibles amenazas. Utiliza ejemplos reales y casos de estudio para ilustrar los riesgos y las consecuencias de los ataques cibernéticos.
 
@@ -32,7 +32,7 @@ La teoría por sí sola no es suficiente para garantizar la seguridad. Es crucia
 
 <h2>Simulación de Ransomware</h2>
 
-Un ejemplo claro para la concienciación, es realizar una simulación con un fichero que contenga un falso Ransomware, dirigido a los usuarios (no hay mejor aprendizaje que el hacer que "caigan en la trampa").
+Un ejemplo claro para la concienciación, es realizar una simulación con un fichero que contenga un `falso Ransomware`, dirigido a los usuarios (no hay mejor aprendizaje que el hacer que "caigan en la trampa").
 
 
 ![Script](/assets/img/2023-06-27/batch.PNG)
@@ -40,9 +40,9 @@ Un ejemplo claro para la concienciación, es realizar una simulación con un fic
 
 <br>
 
-El simulacro constará de enviar un e-mail, similar a uno legítimo, pero que contenga el fichero, comprimido en formato zip, para evadir algunos antivirus que puedan bloquear su descarga. También podríamos dejar el fichero en el escritorio o en un lugar recurrente del usuario, fuera del horario laboral.
+El simulacro constará de enviar un `e-mail`, similar a uno legítimo, pero que contenga el fichero, comprimido en formato `zip`, para evadir algunos antivirus que puedan bloquear su descarga. También podríamos dejar el fichero en el escritorio o en un lugar recurrente del usuario, fuera del horario laboral.
 
-Una manera óptima de administrar y ver los resultados, sería crear una tabla con varios campos (aviso al recibir e-mail, aviso tras descargar y ver fichero, fichero abierto, sin aviso...).
+Una manera óptima de administrar y ver los resultados, sería crear una `tabla con varios campos` (aviso al recibir e-mail, aviso tras descargar y ver fichero, fichero abierto, sin aviso...) e ir anotando como se va comportando cada uno de las víctimas. Al final del simulacro, podría hacerse un `gráfico` que presente de manera muy visual el comportamiento que tiene nuestra plantilla en este momento sobre el ataque realizado.
 
 La ejecución del script se vería de la siguiente forma:
 
@@ -58,4 +58,4 @@ La ejecución del script se vería de la siguiente forma:
 
 <h2> Conclusión </h2>
 
-La ciberseguridad es un desafío constante en el mundo empresarial, y la concienciación de los usuarios desempeña un papel fundamental en la protección de los activos digitales de una empresa. Mediante la implementación de programas de capacitación y sensibilización, simulaciones de ataques y el acceso a recursos prácticos, las empresas pueden fortalecer la postura de seguridad y reducir los riesgos asociados con las amenazas cibernéticas. Recordemos que la seguridad es responsabilidad de todos, y al promover una cultura de ciberseguridad, estaremos construyendo una base sólida para enfrentar los desafíos digitales en el mundo empresarial actual.
+La ciberseguridad es un `desafío constante` en el mundo empresarial, y la concienciación de los usuarios desempeña un papel fundamental en la protección de los activos digitales de una empresa. Mediante la implementación de programas de capacitación y sensibilización, simulaciones de ataques y el acceso a recursos prácticos, las empresas pueden `fortalecer` la postura de seguridad y reducir los riesgos asociados con las amenazas cibernéticas. Recordemos que la seguridad es `responsabilidad de todos`, y al promover una cultura de ciberseguridad, estaremos construyendo una base sólida para enfrentar los desafíos digitales en el mundo empresarial actual.
