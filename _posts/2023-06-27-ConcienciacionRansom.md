@@ -38,6 +38,7 @@ Un ejemplo claro para la concienciación, es realizar una simulación con un fic
 ![Script](/assets/img/2023-06-27/batch.PNG)
 <center> Código fuente del script </center>
 
+<br>
 
 El simulacro puede basarse en el envío de un `e-mail`, similar a uno legítimo, pero que contenga el fichero, comprimido en formato `zip`, para evadir algunos antivirus que puedan bloquear su descarga. También podríamos dejar el fichero en el escritorio o en un lugar recurrente del usuario, fuera del horario laboral.
 
