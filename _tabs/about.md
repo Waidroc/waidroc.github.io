@@ -20,8 +20,6 @@ Si crees que en algún post hay algún error, no se entiende bien lo que intento
 <script src="https://tryhackme.com/badge/1208071"></script>
 </p>
 
-<br>
-
 <p align="center">
 <a href="https://www.buymeacoffee.com/waidrocx" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
 </p>
