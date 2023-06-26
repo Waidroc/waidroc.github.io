@@ -30,7 +30,7 @@ La teoría por sí sola no es suficiente para garantizar la seguridad. Es crucia
 ✓ **Políticas y prácticas de seguridad claras:** Establece políticas claras de seguridad de la información y asegúrate de que todos los empleados las conozcan y las cumplan. Promueve prácticas como el bloqueo de pantallas, el uso de contraseñas fuertes y el cifrado de datos para garantizar una mayor protección de los activos digitales de la empresa.
 
 
-<h2>Simulación de Ransomware</h2>
+## Simulación de Ransomware
 
 Un ejemplo claro para la concienciación, es realizar una simulación con un fichero que contenga un `falso Ransomware`, dirigido a los usuarios (no hay mejor aprendizaje que el hacer que "caigan en la trampa").
 
