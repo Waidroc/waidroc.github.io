@@ -36,6 +36,7 @@ La teoría por sí sola no es suficiente para garantizar la seguridad. Es crucia
 Un ejemplo claro para la concienciación, es realizar una simulación con un fichero que contenga un falso Ransomware, dirigido a los usuarios (no hay mejor aprendizaje que el hacer que "caigan en la trampa").
 
 <center> código fuente del script </center>
+
 ![Script](/assets/img/2023-06-27/batch.PNG)
 
 
