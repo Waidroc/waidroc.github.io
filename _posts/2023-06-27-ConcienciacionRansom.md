@@ -35,7 +35,15 @@ La teoría por sí sola no es suficiente para garantizar la seguridad. Es crucia
 
 Un ejemplo claro para la concienciación, es realizar una simulación con un fichero que contenga un falso Ransomware, dirigido a los usuarios (no hay mejor aprendizaje que el hacer que "caigan en la trampa").
 
-El simulacro contará de enviar un e-mail, similar a uno legítimo, pero que contenga el fichero, comprimido en formato zip, para evadir algunos antivirus que puedan bloquear su descarga.
+**Código fuente del script**
+![Script](/assets/img/2023-06-27/script.PNG)
+
+
+El simulacro constará de enviar un e-mail, similar a uno legítimo, pero que contenga el fichero, comprimido en formato zip, para evadir algunos antivirus que puedan bloquear su descarga. También podríamos dejar el fichero en el escritorio o en un lugar recurrente del usuario, fuera del horario laboral.
+
+Una manera óptima de administrar y ver los resultados, sería crear una tabla con varios campos (aviso al recibir e-mail, aviso tras descargar y ver fichero, fichero abierto, sin aviso...).
+
+
 
 > Descarga del falso Ransomware [`fakeRansomw`](https://github.com/Waidroc/fakeRansom)
 {: .prompt-tip}
