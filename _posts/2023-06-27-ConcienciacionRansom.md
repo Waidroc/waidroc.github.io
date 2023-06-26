@@ -43,7 +43,7 @@ El simulacro puede basarse en el envío de un `e-mail`, similar a uno legítimo,
 
 Una manera óptima de administrar y ver los resultados, sería crear una `tabla con varios campos` (aviso al recibir e-mail, aviso tras descargar y ver fichero, fichero abierto, sin aviso...) e ir anotando como se va comportando cada uno de las víctimas. Al final del simulacro, podría hacerse un `gráfico` que presente de manera muy visual el comportamiento que tiene nuestra plantilla en este momento sobre el ataque realizado.
 
-La ejecución del script se vería de la siguiente forma:
+La ejecución del script se observaría de la siguiente forma:
 
 ![Ejecucion](/assets/img/2023-06-27/ejecucion.gif)
 
