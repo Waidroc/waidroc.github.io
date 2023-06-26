@@ -51,7 +51,7 @@ La ejecución del script se vería de la siguiente forma:
 
 
 
-> Descarga del falso Ransomware [`fakeRansomw`](https://github.com/Waidroc/fakeRansom)
+> Descarga del falso Ransomware [`fakeRansom`](https://github.com/Waidroc/fakeRansom)
 {: .prompt-tip}
 
 
