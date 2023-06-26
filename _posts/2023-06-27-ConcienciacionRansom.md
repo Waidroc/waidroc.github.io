@@ -44,6 +44,11 @@ El simulacro constará de enviar un e-mail, similar a uno legítimo, pero que co
 
 Una manera óptima de administrar y ver los resultados, sería crear una tabla con varios campos (aviso al recibir e-mail, aviso tras descargar y ver fichero, fichero abierto, sin aviso...).
 
+La ejecución del script se vería de la siguiente forma:
+
+![Ejecucion](/assets/img/2023-06-27/batch.gif)
+
+
 
 
 > Descarga del falso Ransomware [`fakeRansomw`](https://github.com/Waidroc/fakeRansom)
