@@ -46,7 +46,7 @@ Una manera óptima de administrar y ver los resultados, sería crear una tabla c
 
 La ejecución del script se vería de la siguiente forma:
 
-![Ejecucion](/assets/img/2023-06-27/batch.gif)
+![Ejecucion](/assets/img/2023-06-27/ejecucion.gif)
 
 
 
