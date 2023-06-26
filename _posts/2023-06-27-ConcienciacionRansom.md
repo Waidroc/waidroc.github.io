@@ -55,6 +55,6 @@ La ejecución del script se vería de la siguiente forma:
 
 
 
-## <h2> Conclusión </h2>
+## Conclusión
 
 La ciberseguridad es un `desafío constante` en el mundo empresarial, y la concienciación de los usuarios desempeña un papel fundamental en la protección de los activos digitales de una empresa. Mediante la implementación de programas de capacitación y sensibilización, simulaciones de ataques y el acceso a recursos prácticos, las empresas pueden `fortalecer` la postura de seguridad y reducir los riesgos asociados con las amenazas cibernéticas. Recordemos que la seguridad es `responsabilidad de todos`, y al promover una cultura de ciberseguridad, estaremos construyendo una base sólida para enfrentar los desafíos digitales en el mundo empresarial actual.
