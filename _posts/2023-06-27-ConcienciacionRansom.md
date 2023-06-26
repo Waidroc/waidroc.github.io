@@ -7,7 +7,7 @@ author: "Waidroc"
 ---
 
 
-![Portada](/assets/img/2023-04-21/portada-honeypot.png)
+![Portada](/assets/img/2023-06-27/portada.jpg)
 
 
 <h2> La Importancia de la Concienciación de los Usuarios en la Ciberseguridad Empresarial. Simulacro Ransomware </h2>
