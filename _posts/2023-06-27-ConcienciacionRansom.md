@@ -40,7 +40,7 @@ Un ejemplo claro para la concienciación, es realizar una simulación con un fic
 
 <br>
 
-El simulacro constará de enviar un `e-mail`, similar a uno legítimo, pero que contenga el fichero, comprimido en formato `zip`, para evadir algunos antivirus que puedan bloquear su descarga. También podríamos dejar el fichero en el escritorio o en un lugar recurrente del usuario, fuera del horario laboral.
+El simulacro puede basarse en el envío de un `e-mail`, similar a uno legítimo, pero que contenga el fichero, comprimido en formato `zip`, para evadir algunos antivirus que puedan bloquear su descarga. También podríamos dejar el fichero en el escritorio o en un lugar recurrente del usuario, fuera del horario laboral.
 
 Una manera óptima de administrar y ver los resultados, sería crear una `tabla con varios campos` (aviso al recibir e-mail, aviso tras descargar y ver fichero, fichero abierto, sin aviso...) e ir anotando como se va comportando cada uno de las víctimas. Al final del simulacro, podría hacerse un `gráfico` que presente de manera muy visual el comportamiento que tiene nuestra plantilla en este momento sobre el ataque realizado.
 
