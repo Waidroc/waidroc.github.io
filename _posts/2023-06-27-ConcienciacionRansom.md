@@ -6,7 +6,6 @@ tags: [concienciacion, batch, ransomware, windows, usuarios, ataques, simulacro]
 author: "Waidroc"
 ---
 
-<h1> La Importancia de la concienciación de los usuarios en la ciberseguridad empresarial - Simulacro de Ransomware </h1>
 
 ![Portada](/assets/img/2023-06-27/portada.jpg)
 
