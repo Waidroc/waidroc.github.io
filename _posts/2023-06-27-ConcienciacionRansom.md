@@ -2,7 +2,7 @@
 title: La importancia de la concienciación de los usuarios en la ciberseguridad empresarial. Simulacro de Ransomware
 date: 2023-06-25 11:00:00
 categories: [Concienciacion, Ransomware]
-tags: [concienciacion, batch, ransomware, windows, usuarios, ataques, simulacro]    
+tags: [concienciacion, batch, ransomware, windows, usuarios, ataques, simulacro, empresas]    
 author: "Waidroc"
 ---
 
