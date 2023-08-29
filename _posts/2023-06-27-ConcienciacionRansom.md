@@ -10,7 +10,7 @@ author: "Waidroc"
 ![Portada](/assets/img/2023-06-27/portada2.jpg)
 
 
- 
+
 La ciberseguridad es un aspecto `fundamental` en cualquier empresa, pero muy a menudo subestimado, ya que no se valora en la mayoría de los casos el verdadero impacto que tiene sobre una organización. Mientras que las medidas técnicas de protección son vitales, no debemos pasar por alto el `factor humano`. Los usuarios son el `eslabón más débil` en la cadena de seguridad, y su concienciación y capacitación son cruciales para `proteger los activos` digitales de una organización. En este artículo, exploraremos la importancia de la concienciación de los usuarios en las empresas y enseñaremos un enfoque práctico para fomentar una buena cultura en ciberseguridad.
 
 Los `ciberdelincuentes` están constantemente buscando nuevas formas de infiltrarse en las redes empresariales y robar información confidencial. A menudo, utilizan técnicas de ingeniería social, como el phishing, el malware y los ataques de ransomware, para explotar la falta de conocimiento y concienciación de los usuarios. Estas amenazas pueden provocar `daños significativos`, como pérdida de datos, tiempo de inactividad del sistema y daño a la reputación de la empresa.
