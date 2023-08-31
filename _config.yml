@@ -45,7 +45,7 @@ social:
   email: waidroc@protonmail.com             # change to your email address
   links:
     # The first element serves as the copyright owner's link      
-    - https://www.linkedin.com/in/alfonso-ca/
+  #  - https://www.linkedin.com/in/alfonso-ca/
     - https://tryhackme.com/p/Waidroc
     - https://github.com/username       
     # Uncomment below to add more social links
