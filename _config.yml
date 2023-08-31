@@ -35,17 +35,17 @@ github:
 TryHackMe:
   username: Waidroc
 
-Linkedin:
-  username: Alfonso Córdoba Aroca            # change to your twitter username
+#Linkedin:
+#  username:             # change to your twitter username
 
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: Alfonso Córdoba
+ # name: 
   email: waidroc@protonmail.com             # change to your email address
   links:
     # The first element serves as the copyright owner's link      
-  #  - https://www.linkedin.com/in/alfonso-ca/
+  #  - https://www.linkedin.com/
     - https://tryhackme.com/p/Waidroc
     - https://github.com/username       
     # Uncomment below to add more social links
