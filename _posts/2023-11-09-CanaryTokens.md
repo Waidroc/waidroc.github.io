@@ -50,7 +50,10 @@ Los Canarytokens ofrecen diversas `ventajas` clave sobre su predecesor:
 
 Tenemos dos vías potenciales para implementar los Canarytokens en nuestra organización.
 
-La más sencilla y ágil, y en la que nos centraremos en la prueba de concepto en este post, se basa en `crear los tokens desde su web oficial`, la cual no requiere de ningún conocimiento adicional. Solo necesitaríamos estudiar dónde vamos a implementarlo y qué queremos obtener de él, así como el tipo de cebo o señuelo donde introduciremos la baliza.
+La más sencilla y ágil, y en la que nos centraremos en la prueba de concepto en este post, se basa en crear los tokens desde su [`web oficial`](https://canarytokens.org/generate), la cual no requiere de ningún conocimiento adicional. Solo necesitaríamos estudiar dónde vamos a implementarlo y qué queremos obtener de él, así como el tipo de cebo o señuelo donde introduciremos la baliza.
+
+![WEBOFICIAL!](/assets/img/2023-11-08/webOficial.png)
+
 
 Como alternativa, tenemos la opción de crear nuestro propio `servidor de Canarytokens`, estableciendo una conexión directa con el servidor principal a la hora de crearlos y mantener las comunicaciones. Esto podría tener sentido si deseamos colocar algún tipo de canarytoken, en endpoints o servidores que no tienen conexión a Internet, dando lugar así al establecimiento de la conexión vía HTTP/HTTPS localmente y que, nuestro servidor de Canarytokens, se encargue de mantener las comunicaciones con el servidor externo principal, además de notificar vía e-mail de cuando la baliza es manipulada, para así, notificar a los responsables de las balizas y que puedan tomar medidas de seguridad inmediatas. Si tienes curiosidad en probar como funciona este método, te dejo el [`Github oficial`](https://github.com/thinkst/canarytokens) con los pasos para implementarlo.
 
