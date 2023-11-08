@@ -30,30 +30,53 @@ Para terminar de entender bien su funcionamiento, podemos aclararlo com una `ana
 
 ### ¿Por qué los Canarytokens son una mejora sobre los honeytokens?
 
-Los Canarytokens ofrecen diversas ventajas clave sobre su predecesor:
+Los Canarytokens ofrecen diversas `ventajas` clave sobre su predecesor:
 
-⧫ **Versatilidad:** Pueden ser implementados en diferentes contextos, como sistemas de archivos, correos electrónicos, documentos, bases de datos y más. Esto los hace adecuados para una amplia gama de aplicaciones.
+⧫ **Versatilidad:** Pueden ser implementados en `diferentes contextos`, como sistemas de archivos, correos electrónicos, documentos, bases de datos y más. Esto los hace adecuados para una amplia gama de aplicaciones.
 
-⧫ **Discreción:** A menudo, los honeytokens son fácilmente reconocibles como señuelos, lo que puede desalentar a los atacantes. Los Canary Tokens, por otro lado, pueden camuflarse de manera efectiva como datos legítimos.
+⧫ **Discreción:** A menudo, los honeytokens son fácilmente reconocibles como señuelos, lo que puede desalentar a los atacantes. Los Canarytokens, por otro lado, pueden `camuflarse de manera efectiva` como datos legítimos.
 
-⧫ **Detección precisa:** Los Canary Tokens generan alertas inmediatas cuando se "tocan", proporcionando información detallada sobre el tipo de actividad sospechosa que se ha producido.
+⧫ **Detección precisa:** Los Canarytokens generan `alertas inmediatas` cuando se activan, proporcionando información detallada sobre el tipo de actividad sospechosa que se ha producido.
 
-⧫ **Mejor adaptación a entornos de producción real:** Los honeytokens pueden interrumpir los procesos y sistemas de producción, mientras que los Canarytokens se integran de manera más fluida en el entorno real sin causar interrupciones significativas.
+⧫ **Mejor adaptación a entornos de producción real:** Los honeytokens pueden interrumpir los procesos y sistemas de producción, mientras que los Canarytokens se integran de manera más fluida en el entorno real `sin causar interrupciones` significativas.
 
 ### ¿Cómo se implementan los Canary Tokens?
 
 Tenemos dos vías potenciales para implementar los Canarytokens en nuestra organización.
 
-La más sencilla y ágil, y en la que nos centraremos en la prueba de concepto en este post, se basa en crear los tokens desde su web oficial, la cual no requiere de ningún conocimiento adicional. Solo necesitaríamos estudiar dónde vamos a implementarlo y qué queremos obtener de él, así como el tipo de cebo o señuelo donde introduciremos la baliza.
+La más sencilla y ágil, y en la que nos centraremos en la prueba de concepto en este post, se basa en `crear los tokens desde su web oficial`, la cual no requiere de ningún conocimiento adicional. Solo necesitaríamos estudiar dónde vamos a implementarlo y qué queremos obtener de él, así como el tipo de cebo o señuelo donde introduciremos la baliza.
 
-Como alternativa, tenemos la opción de crear nuestro propio servidor de Canarytokens, estableciendo una conexión directa con el servidor principal a la hora de crearlos y mantener las comunicaciones. Esto podría tener sentido si deseamos colocar algún tipo de canarytoken, en endpoints o servidores que no tienen conexión a Internet, dando lugar así al establecimiento de la conexión vía HTTPS localmente y que, nuestro servidor de Canarytokens, se encargue de mantener las comunicaciones con el servidor externo principal, además de notificar vía e-mail de cuando la baliza es manipulada, para así notificar a los responsables de las balizas y que puedan tomar medidas de seguridad inmediatas. Si tienes curiosidad en probar como funciona este método, te dejo el [`Github oficial`](https://github.com/thinkst/canarytokens) con los pasos para implementarlo.
+Como alternativa, tenemos la opción de crear nuestro propio `servidor de Canarytokens`, estableciendo una conexión directa con el servidor principal a la hora de crearlos y mantener las comunicaciones. Esto podría tener sentido si deseamos colocar algún tipo de canarytoken, en endpoints o servidores que no tienen conexión a Internet, dando lugar así al establecimiento de la conexión vía HTTP/HTTPS localmente y que, nuestro servidor de Canarytokens, se encargue de mantener las comunicaciones con el servidor externo principal, además de notificar vía e-mail de cuando la baliza es manipulada, para así, notificar a los responsables de las balizas y que puedan tomar medidas de seguridad inmediatas. Si tienes curiosidad en probar como funciona este método, te dejo el [`Github oficial`](https://github.com/thinkst/canarytokens) con los pasos para implementarlo.
 
 
 ## Prueba de Concepto
 
 Lo primero que debemos de tener claro es, con qué finalidad vamos a generar un token, así como saber la ubicación final, tipo de canarytoken a generar de entre todas las opciones que la herramienta nos brinda y qué mensaje informativo vamos a indicarle si alguna vez un atacante llega a "clicar" en la baliza.
 
-Después, nos iremos al [`sitio oficial`](https://canarytokens.org/generate) e iniciamos el proceso de generaración del token:
+Después, nos iremos al [`sitio oficial`](https://canarytokens.org/generate) e iniciamos el proceso de generaración del token, siguiendo siempre los pasos indicados a continuación:
+
+⧫ **Elección del tipo de token:** Determinaremos el tipo de token que se adapte mejor a nuestro entorno. Algunas opciones comunes incluyen documentos falsos, direcciones de correo electrónico falsas, diversos ficheros en sistemas (PDFs, Excels, Words...) y más.
+
+⧫ **Generación de tokens:** Una vez identificado el tipo de Canarytoken que deseamos generar, debemos indicar un correo para la notificación en caso de activar la baliza, así como su descripción que iría en el e-mail enviado (deberá de ser lo más descriptiva posible, para así saber localizar el token vulnerado, en caso de que tengamos múltiples y diversos tokens distribuidos por toda la organización)
+
+⧫ **Distribución estratégica:** Una vez generados, debemos de volver a estudiar y valorar estratégicamente donde colocarlos, valorando los activos de toda la superficie de nuestra organización (servidores, APIs, registros, correos electrónicos...).
+
+⧫ **Monitorización y alertas:** Cuando un token se active, recibiremos una alerta que nos permitirá investigar la actividad sospechosa. Aquí es cuando entra en juego la importancia de la descripción añadida anteriormente, para así saber localizar "al toque", que baliza ha sido activada, identificando así el activo y la ubicación vulnerada.
+
+⧫ **Respuesta y análisis:** Una vez activado un Canarytoken, debemos investigar el incidente para determinar la naturaleza de la amenaza y tomar medidas adecuadas para mitigarla.
+
+A continuación, se proponen 2 tipos de escenarios, ambos fuera de un ámbito corporativo, únicamente para uso propio como "usuario". En el primero de ellos, se ocultará el Canarytoken dentro de un fichero excel, en el que supuestamente se estén guardando credenciales de diversas plataforma del usuario (banco, redes sociales...). En el segundo, vamos a ocultarlo dentro de un .exe ejecutable, intentando que un atacante crea que es un programa que oculta información importante (robo de programa en producción o desarrollo).
+
+### Escenario 1
+
+
+
+
+
+### Escenario 2
+
+Al igual que en el primer escenario planteado, seguimos la misma serie de pasos:
+
 
 
 
