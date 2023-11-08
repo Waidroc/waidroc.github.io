@@ -17,9 +17,16 @@ En el sector de la ciberseguridad, la detección temprana de amenazas es esencia
 
 # ¿Qué son los Canarytokens?
 
+![CANARYTOKENS!](/assets/img/2023-11-08/Canarytokens-Logo-01.png)
+
 Los Canarytokens han nacido para sustituir a los Honeytokens, los cuales son señuelos de seguridad, en forma de ficheros, diseñados para atraer a posibles atacantes y alertar a los administradores de sistemas sobre actividades sospechosas. Estos tokens se colocan en lugares estratégicos, como documentos, ficheros o sistemas, y están diseñados para parecer atractivos para los atacantes. Cuando un atacante accede o intenta acceder a un Honeytoken, se dispara una alerta, lo que permite a los administradores tomar medidas para defenderse.
 
 Sabiendo esto sobre los Honeytokens, es cuando entra a la acción el concepto de Canarytoken, los cuales son una evolución de éstos ya que, en adición a lo comentando anteriormente, los Canarytokens son balizas digitales que generan una alerta cuando se activan. Pueden encontrarse en múltiples escenarios, podiendo llegar a  ser enlaces web, ficheros, direcciones de correo electrónico, etc. Cuando uno de éstos se activa, se notifica a los administradores, lo que indica un posible intento de ataque o acceso no autorizado. 
+
+Para terminar de entender bien su funcionamiento, podemos aclararlo com una analogía: un águila (atacante), estando en un bosque (nuestra infrastructura), intenta conseguir una presa para calmar su apetito (información confidencial). Avista una presa fácil (fichero en URI susceptible de tener información confidencial *C:\Administracion*), el cuál se trata de un animal indefenso (fichero susceptible de tener información muy confidencial *credenciales.txt*). Cuando ésta realiza el ataque, el pobre animalito, desprende un sonido característico para así, avisar a sus demás compañeros para que huyan del ave depredadora, con el fin de escapar de sus garras (aviso a responsables de TI de la organización).
+
+![ANALOGÍA!](/assets/img/2023-11-08/analogia.jpeg)
+
 
 ### ¿Por qué los Canary Tokens son una mejora sobre los honeytokens?
 
@@ -33,9 +40,8 @@ Los Canary Tokens ofrecen diversas ventajas clave sobre los honeytokens:
 
 ⧫ **Mejor adaptación a entornos de producción real:** Los honeytokens pueden interrumpir los procesos y sistemas de producción, mientras que los Canary Tokens se integran de manera más fluida en el entorno real sin causar interrupciones significativas.
 
-![CANARYTOKENS!](/assets/img/2023-11-08/Canarytokens-Logo-01.png)
 
-Para terminar de entender bien su funcionamiento, podemos aclararlo com una analogía: un águila (atacante), estando en un bosque (nuestra infrastructura), intenta conseguir una presa para calmar su apetito. Avista una presa fácil (fichero en URI susceptible de tener información confidencial *C:\Administracion*), el cuál se trata de un pájarito indefenso (fichero susceptible de tener información muy confidencial *credenciales.txt*). Cuando ésta realiza el ataque, el pobre pajarillo, con su canto, avisa a sus demás compañeros para que huyan del ave depredadora para escapar de ella (aviso a responsables de TI de la organización).
+
 
 ## Prueba de Concepto
 
