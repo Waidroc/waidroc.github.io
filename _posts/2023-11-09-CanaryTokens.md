@@ -51,7 +51,9 @@ Como alternativa, tenemos la opción de crear nuestro propio servidor de Canaryt
 
 ## Prueba de Concepto
 
+Lo primero que debemos de tener claro es, con qué finalidad vamos a generar un token, así como saber la ubicación final, tipo de canarytoken a generar de entre todas las opciones que la herramienta nos brinda y qué mensaje informativo vamos a indicarle si alguna vez un atacante llega a "clicar" en la baliza.
 
+Después, nos iremos al [`sitio oficial`](https://canarytokens.org/generate) e iniciamos el proceso de generaración del token:
 
 
 
