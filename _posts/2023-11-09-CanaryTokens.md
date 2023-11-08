@@ -31,7 +31,7 @@ Para terminar de entender bien su funcionamiento, podemos aclararlo com una `ana
 ![ANALOGÍA!](/assets/img/2023-11-08/analogia.jpeg)
 
 
-### ¿Por qué los Canarytokens son una mejora sobre los honeytokens?
+### ¿Por qué los Canarytokens son una mejora en comparación los honeytokens?
 
 Los Canarytokens ofrecen diversas `ventajas` clave sobre su predecesor:
 
