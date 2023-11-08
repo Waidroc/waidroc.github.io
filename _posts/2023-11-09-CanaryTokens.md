@@ -65,18 +65,17 @@ Después, nos iremos al [`sitio oficial`](https://canarytokens.org/generate) e i
 
 ⧫ **Respuesta y análisis:** Una vez activado un Canarytoken, debemos investigar el incidente para determinar la naturaleza de la amenaza y tomar medidas adecuadas para mitigarla.
 
-A continuación, se proponen 2 tipos de escenarios, ambos fuera de un ámbito corporativo, únicamente para uso propio como "usuario". En el primero de ellos, se ocultará el Canarytoken dentro de un fichero excel, en el que supuestamente se estén guardando credenciales de diversas plataforma del usuario (banco, redes sociales...). En el segundo, vamos a ocultarlo dentro de un .exe ejecutable, intentando que un atacante crea que es un programa que oculta información importante (robo de programa en producción o desarrollo).
+En el segundo, vamos a ocultarlo dentro de un .exe ejecutable, intentando que un atacante crea que es un programa que oculta información importante (robo de programa en producción o desarrollo).
 
 ### Escenario 1
 
-
+En el siguiente escenario, se ocultará el Canarytoken dentro de un fichero excel, en el que supuestamente, se deberían de estar guardando credenciales de diversas plataformas del usuario (banco, redes sociales...)
 
 
 
 ### Escenario 2
 
-Al igual que en el primer escenario planteado, seguimos la misma serie de pasos:
-
+En este caso, el token se alojará dentro de un programa ejecutable (.exe). Se simulará el robo de un programa en desarrollo donde el atacante, querrá exfiltrar el programa mencionado para así, robárselo a la víctima y apoderarse de él y de sus futuras ganancias económicas y reputacionales.
 
 
 
