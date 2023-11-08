@@ -6,7 +6,7 @@ tags: [canarytoken, defensa, concepto, monitorizacion, deteccion, recurso, herra
 author: Waidroc
 ---
 
-![TITULO!](/assets/img/2023-11-08/ct_titulo.jpg)
+![TITULO!](/assets/img/2023-11-08/ct_titulo.png)
 
 
 ¡Hola a todxs!  👋🏻 
