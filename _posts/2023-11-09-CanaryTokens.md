@@ -43,7 +43,7 @@ Los Canarytokens ofrecen diversas `ventajas` clave sobre su predecesor:
 
 ⧫ **Mejor adaptación a entornos de producción real:** Los honeytokens pueden interrumpir los procesos y sistemas de producción, mientras que los Canarytokens se integran de manera más fluida en el entorno real `sin causar interrupciones` significativas.
 
-![APPROVED!](/assets/img/2023-11-08/approved.png)
+![APPROVED!](/assets/img/2023-11-08/approved2.png)
 
 
 ### ¿Cómo se implementan los Canary Tokens?
