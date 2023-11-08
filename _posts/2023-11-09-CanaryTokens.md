@@ -21,7 +21,7 @@ En el sector de la ciberseguridad, la `detección temprana` de amenazas es esenc
 
 Los Canarytokens han nacido para `sustituir` a los Honeytokens, los cuales son señuelos de seguridad, en forma de ficheros, diseñados para atraer a posibles atacantes y alertar a los administradores de sistemas sobre actividades sospechosas. Estos tokens se colocan en lugares estratégicos, como documentos, ficheros o sistemas, y están diseñados para parecer atractivos con el fin de captar la atención de los atacantes. Cuando éstos acceden o intentan acceder a un Honeytoken, se dispara una alerta, lo que permite a los administradores tomar medidas para defenderse.
 
-![HONEYTOKENS!](/assets/img/2023-11-08/honeytoken2.png)
+![HONEYTOKENS!](/assets/img/2023-11-08/honeytoken3.png)
 
 
 Sabiendo esto sobre los Honeytokens, es cuando entra a la acción el concepto de `Canarytoken`, los cuales son una `evolución` de éstos ya que, en adición a lo comentando anteriormente, los Canarytokens son balizas digitales que generan una alerta inminente al ser activados y además pueden encontrarse en múltiples escenarios, entre ellos,  pueden camuflarse entre enlaces web, ficheros, direcciones de correo electrónico, bases de datos y un largo etcétera. Cuando uno de éstos se activa, se notifica a los administradores, lo que indica un posible intento de ataque o acceso no autorizado. 
