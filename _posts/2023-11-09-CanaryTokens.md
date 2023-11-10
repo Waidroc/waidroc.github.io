@@ -80,6 +80,16 @@ En el segundo, vamos a ocultarlo dentro de un .exe ejecutable, intentando que un
 
 En el siguiente escenario, se ocultará el Canarytoken dentro de un fichero excel, en el que supuestamente, se deberían de estar guardando credenciales de diversas plataformas del usuario (banco, redes sociales...)
 
+En primer lugar, decidimos poner el fichero en nuestro escritorio para que así, en el caso de que un atacante acceda a nuestra máquina, tenga a su disposición y, a simple vista, el fichero con nuestras falsas credenciales. Una vez decidido, generamos el token, indicando la nota descriptiva y e-mail que recibirá la notificación cuando se active la baliza:
+
+![EXCEL!](/assets/img/2023-11-08/generarExcel.png)
+
+A continuación, descargamos el fichero generado y lo ubicamos en su sitio correspondiente:
+
+![DESCARGAYADMINISTRACION!](/assets/img/2023-11-08/descargar.png)
+
+
+
 
 
 ### Escenario 2
