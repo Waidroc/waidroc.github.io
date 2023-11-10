@@ -128,6 +128,3 @@ Como siempre, cualquier duda y petición al respecto, podéis contactar conmigo 
 `Muchas gracías por leer, Waidroc :)`
 
 
-
-
-<h1>🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧     UNDER CONSTRUCTION     🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧</h1>  
