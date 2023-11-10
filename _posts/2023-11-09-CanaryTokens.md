@@ -1,5 +1,5 @@
 ---
-title: Canarytokens - Detección sencilla y eficaz.
+title: Canarytokens - Detección sencilla y eficaz
 date: 2023-11-08 9:00:00
 categories: [Blue Team, Detección, Monitorización]
 tags: [canarytoken, defensa, concepto, monitorizacion, deteccion, recurso, herramienta, tutorial, honeypot]    
