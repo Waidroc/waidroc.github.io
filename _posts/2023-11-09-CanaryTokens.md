@@ -88,6 +88,16 @@ A continuación, descargamos el fichero generado y lo ubicamos en su sitio corre
 
 ![DESCARGAYADMINISTRACION!](/assets/img/2023-11-08/descargar.png)
 
+Si rellenamos el fichero, y le introducimos datos para que parezca legítimo, pasará desapercibido para un atacante, a no ser de que analice el fichero antes de abrirlo y vea las conexiones que se realizan hacia el servidor de Canarytokens instantáneamente tras su apertura.
+
+A continuación, veremos la secuencia de apertura del fichero y su posterior notificación:
+
+![APERTURA!](/assets/img/2023-11-08/excelAbierto.png)
+
+![NOTIFICACIÓN!](/assets/img/2023-11-08/alert.png)
+
+Si hacemos clic en ver más información, iremos directamente al sitio oficial de Canarytokens, y podremos geolocalizar la IP del atacante y ver diversa información que podría servirnos para analizar la conexión realizada externamente por parte del atacante. En este caso, al ser una intrusión interna, no nos serviría de mucho y deberíamos analizar tomando como punto de partida la descripción aportada en el Canarytoken.
+
 
 
 
