@@ -123,7 +123,7 @@ A nosotros, como propietarios del Canarytoken, nos saltaría la siguiente alerta
 
 A partir de ahí, comenzaríamos el proceso de investigación, empezando a llevar una monitorización más exhaustiva en los correos electrónicos expuestos en Internet, para así evitar futuros ataques de ingeniería social.
 
-</br>
+
 
 Como siempre, cualquier duda y petición al respecto, podéis contactar conmigo a través del e-mail waidroc@protonmail.com o vía [`Linkedin`](https://www.linkedin.com/in/alfonso-ca/)
 
