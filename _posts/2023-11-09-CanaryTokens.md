@@ -105,8 +105,21 @@ Si hacemos clic en ver más información, iremos directamente al sitio oficial d
 
 En este caso, el token se alojará dentro de una dirección de correo electrónico que se pondrá como señuelo en una web corporativa, y que sea susceptible de un posible ataque de ingeniería social para capturar credenciales, por parte de un atacante. Se simulará una dirección de correo para la recuperación de contraseñas de acceso a plataformas corporativas y se colocará en el index (página inicial) de una web concurrente.
 
+Nos vamos a la web oficial para generar el correo señuelo con el Canarytoken:
 
+![GENERARE!](/assets/img/2023-11-08/generateEmail.png)
 
+![EGENERADO!](/assets/img/2023-11-08/emailGenerado.png)
+
+Para que sea menos sospechoso, podríamos crear un alias para que apunte a nuestro dominio legítimo pero, en este PoC, dejaremos el generado.
+
+Ahora, vamos a ponernos en el lugar del atacante. Entraríamos en la web principal de nuestra víctima objetivo. Vemos que en el pie de la web, aparece un correo electrónico, indicando que sirve para la recuperación de credenciles de plataformas internas. El atacante, capta ese correo e inmediatamente, escribe un e-mail para intentar un ataque de ingeniería social, suplantando a un empleado que solicita la recuperación de las credenciales de la intranet corporativa.
+
+![WEB!](/assets/img/2023-11-08/web.png)
+
+A nosotros, como propietarios del Canarytoken, nos saltaría la siguiente alerta instantáneamente:
+
+![ALERTEMAIL!](/assets/img/2023-11-08/alertt.png)
 
 
 
