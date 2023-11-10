@@ -32,7 +32,7 @@ Para terminar de entender bien su funcionamiento, podemos aclararlo com una `ana
 ![ANALOGÍA!](/assets/img/2023-11-08/analogia.jpeg)
 
 
-### ¿Por qué los Canarytokens son una mejora en comparación los honeytokens?
+### ¿Por qué los Canarytokens son una mejora en comparación con los honeytokens?
 
 Los Canarytokens ofrecen diversas `ventajas` clave sobre su predecesor:
 
@@ -78,7 +78,7 @@ Después, nos iremos al [`sitio oficial`](https://canarytokens.org/generate) e i
 
 ### Escenario 1
 
-En el siguiente escenario, se ocultará el Canarytoken dentro de un fichero excel, en el que supuestamente, se deberían de estar guardando credenciales de diversas plataformas del usuario (banco, redes sociales...)
+En el siguiente escenario, se ocultará el Canarytoken dentro de un fichero `excel`, en el que supuestamente, se deberían de estar guardando `credenciales` de diversas plataformas del usuario (banco, redes sociales...)
 
 En primer lugar, decidimos poner el fichero en nuestro escritorio para que así, en el caso de que un atacante acceda a nuestra máquina, tenga a su disposición y, a simple vista, el fichero con nuestras falsas credenciales. Una vez decidido, generamos el token, indicando la nota descriptiva y e-mail que recibirá la notificación cuando se active la baliza:
 
@@ -100,11 +100,9 @@ Si hacemos clic en ver más información, iremos directamente al sitio oficial d
 
 
 
-
-
 ### Escenario 2
 
-En este caso, el token se alojará dentro de una dirección de correo electrónico que se pondrá como señuelo en una web corporativa, y que sea susceptible de un posible ataque de ingeniería social para capturar credenciales, por parte de un atacante. Se simulará una dirección de correo para la recuperación de contraseñas de acceso a plataformas corporativas y se colocará en el index (página inicial) de una web concurrente.
+En este caso, el token se alojará dentro de una dirección de `correo electrónico` que se pondrá como señuelo en una web corporativa, y que sea susceptible de un posible ataque de `ingeniería social para capturar credenciales`, por parte de un atacante. Se simulará una dirección de correo para la recuperación de contraseñas de acceso a plataformas corporativas y se colocará en el index (página inicial) de una web concurrente.
 
 Nos vamos a la web oficial para generar el correo señuelo con el Canarytoken:
 
