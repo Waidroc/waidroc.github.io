@@ -74,7 +74,6 @@ Después, nos iremos al [`sitio oficial`](https://canarytokens.org/generate) e i
 
 ⧫ **Respuesta y análisis:** Una vez activado un Canarytoken, debemos investigar el incidente para determinar la naturaleza de la amenaza y tomar medidas adecuadas para mitigarla.
 
-En el segundo, vamos a ocultarlo dentro de un .exe ejecutable, intentando que un atacante crea que es un programa que oculta información importante (robo de programa en producción o desarrollo).
 
 ### Escenario 1
 
@@ -96,7 +95,7 @@ A continuación, veremos la secuencia de apertura del fichero y su posterior not
 
 ![NOTIFICACIÓN!](/assets/img/2023-11-08/alert.png)
 
-Si hacemos clic en ver más información, iremos directamente al sitio oficial de Canarytokens, y podremos geolocalizar la IP del atacante y ver diversa información que podría servirnos para analizar la conexión realizada externamente por parte del atacante. En este caso, al ser una intrusión interna, no nos serviría de mucho y deberíamos analizar tomando como punto de partida la descripción aportada en el Canarytoken.
+Si hacemos clic en ver más información, iremos directamente al sitio oficial de Canarytokens, y podremos geolocalizar la IP del atacante y ver diversa información que podría servirnos para analizar la conexión realizada externamente por parte del atacante (User-Agent, AS, país de origen...). En este caso, al ser una intrusión interna, no nos serviría de mucho y deberíamos analizar tomando como punto de partida la descripción aportada en el Canarytoken.
 
 
 
@@ -104,7 +103,7 @@ Si hacemos clic en ver más información, iremos directamente al sitio oficial d
 
 ### Escenario 2
 
-En este caso, el token se alojará dentro de un programa ejecutable (.exe). Se simulará el robo de un programa en desarrollo donde el atacante, querrá exfiltrar el programa mencionado para así, robárselo a la víctima y apoderarse de él y de sus futuras ganancias económicas y reputacionales.
+En este caso, el token se alojará dentro de una dirección de correo electrónico que se pondrá como señuelo en una web corporativa, y que sea susceptible de un posible ataque de ingeniería social para capturar credenciales, por parte de un atacante. Se simulará una dirección de correo para la recuperación de contraseñas de acceso a plataformas corporativas y se colocará en el index (página inicial) de una web concurrente.
 
 
 
