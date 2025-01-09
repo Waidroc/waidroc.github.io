@@ -1,13 +1,13 @@
 ---
 title: Periodic Network Scan
-date: 2025-01-08 9:00:00
+date: 2025-01-09 9:00:00
 categories: [Tools, Network]
 tags: [tools, network, discovery, automate, hosts]    
 author: "Waidroc"
 ---
 
 
-![Portada](/assets/img/2023-02-17/portadaDef.jpg)
+![Portada](/assets/img/2025-01-09/portada.png)
 
 
 
