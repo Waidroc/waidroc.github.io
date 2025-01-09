@@ -26,8 +26,14 @@ Para ello, implementaremos y configuraremos en nuestro entorno de Kali Linux, Op
 **4. Organizar los scripts y salidas en un entorno estructurado y escalable**
 
 
-> Todos los scripts que vamos a crear estarán en el PATH /home/<username>/Tools/periodicNetworkDiscovery
+> Todos los scripts que vamos a crear estarán en el PATH /home/username/Tools/periodicNetworkDiscovery
 {: .prompt-tip}
+
+```bash
+mkdir -p /home/<username>/Tools/periodicNetworkDiscovery/{scripts,configs,output/known_hosts,output/logs}
+```
+
+El resultado sería el siguiente:
 
 ```bash
 /home/waidroc/Tools/periodicNetworkDiscovery/
@@ -39,10 +45,72 @@ Para ello, implementaremos y configuraremos en nuestro entorno de Kali Linux, Op
 ├── output/                   # Salidas organizadas
 │   ├── known_hosts/          # Hosts conocidos por red
 │   └── logs/                 # Archivos de log
-
 ```
 
-![Cartel](/assets/img/2023-02-17/cartel_taller_ciber.jpg)
+<h3>Preparación del entorno</h3>
+
+Como siempre, lo primero que debemos de hacer es actualizar nuestro sistema, para así evitar futuros problemas con dependencias:
+
+```bash
+sudo apt update && sudo apt upgrade -y
+```
+
+Nos aseguramos de que tenemos instaladas las herramientas necesarias:
+
+```bash
+sudo apt install nmap mailutils -y
+```
+
+El siguiente paso, será la creación del fichero redes_a_monitorizar.txt, en el cual identificaremos las redes que disponemos en nuestra infraestructura, para así listar las redes que deseamos monitorizar:
+
+```bash
+nano /home/<username>/Tools/Periodic_Network_Discovery/configs/redes_a_monitorizar.txt
+```
+
+Añadiremos las redes al fichero creado (una por línea):
+
+```bash
+192.168.1.0/24
+10.0.0.0/16
+172.16.0.0/12
+```
+
+> Tengamos en cuenta que si queremos añadir una nueva red en el futuro, debemos de incluirla en este fichero.
+{: .prompt-tip}
+
+
+Ahora, realizaremos un escaneo inicial a cada una de las redes para así, establecer los hosts conocidos para cada una de las redes. Para ello, nos apoyaremos en el siguiente script, el cual almacenaremos en la ruta /home/username/Tools/periodicNetworkDiscovery/scripts/initialScan.sh
+
+```bash
+#!/bin/bash
+
+# Archivo con las redes a monitorizar
+REDES_FILE="/home/waidroc/Tools/periodicNetworkDiscovery/configs/redes_a_monitorizar.txt"
+OUTPUT_DIR="/home/waidroc/Tools/periodicNetworkDiscovery/output/known_hosts"
+
+# Escanear cada red y guardar los hosts conocidos
+while IFS= read -r network; do
+    echo "Realizando escaneo inicial para la red: $network"
+    output_file="$OUTPUT_DIR/$(echo $network | tr '/' '_').txt"
+    nmap -sn $network -oG - | awk '/Up$/{print $2}' > "$output_file"
+    echo "Hosts conocidos para $network guardados en $output_file"
+done < "$REDES_FILE"
+```
+
+
+
+
+<h3>Instalación y configuración de OpenVAS en Kali Linux</h3>
+
+
+
+
+
+
+
+
+
+
 
 Además de pertenecer al taller anteriormente mencionado, el CTF fue publicado como reto, con un premio bastante jugoso: `1 x curso OSINT en Linux en Cyber Hunter Academy y 1 x cena para 2 personas en el restaurante Figón del Huecar, Cuenca`. El ganador fue `@90n20sec`.
 
