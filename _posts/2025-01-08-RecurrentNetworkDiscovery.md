@@ -55,7 +55,7 @@ El resultado sería el siguiente:
 │   └── dispositivos_conocidos.txt # Lista consolidada de dispositivos conocidos
 ```
 
-<h3>Configuración de redes a monitorizar</h3>
+<h2>Configuración de redes a monitorizar</h2>
 
 El siguiente paso, será la creación del fichero redes_a_monitorizar.txt, en el cual identificaremos las redes que disponemos en nuestra infraestructura, para así listar las redes que deseamos monitorizar:
 
@@ -76,7 +76,7 @@ Añadiremos las redes al fichero creado (una por línea):
 {: .prompt-tip}
 
 
-<h3>Script para el escaneo inicial</h3>
+<h2>Script para el escaneo inicial</h2>
 
 El siguiente script realizará el primer escaneo de las redes identificadas, guardando los resultados en un fichero, sin necesidad de notificación por parte del Bot recientemente creado.
 
@@ -117,7 +117,7 @@ Otorgamos al script permisos de ejecución:
 chmod +x /home/waidroc/Tools/periodicNetworkDiscovery/scripts/escaneo_inicial.sh
 ```
 
-<h3>Configuración del bot de Telegram para las notificaciones</h3>
+<h2>Configuración del bot de Telegram para las notificaciones</h2>
 
 En primera instancia, buscamos en Telegram a @BotFather para comenzar con la creación del bot.
 
@@ -137,7 +137,7 @@ curl -s https://api.telegram.org/bot<TU_TOKEN>/getUpdates | jq
 Debemos de guardar tanto el chat_id como el API TOKEN, ya que lo utilizaremos más adelante en los scripts que desarrollemos.
 
 
-<h3>Script para escaneos periódicos con notificaciones</h3>
+<h2>Script para escaneos periódicos con notificaciones</h2>
 
 El siguiente script está basado en el escaneo de redes con Nmap, comparando los resultados con el archivo histórico. A su vez, notificará por Telegram lo snuevos hosts detectados, agragando los nuevos activos a la lista de dispositivos conocidos si aparecen al menos 3 veces en los respectivos escaneos que vaya realizando.
 
@@ -224,7 +224,7 @@ Asignamos permisos de ejecución al script:
 chmod +x /home/waidroc/Tools/periodicNetworkDiscovery/scripts/detectar_nuevos_hosts.sh
 ```
 
-<h3> Automatizar el descubrimiento y monitorización en múltiples redes</h3>
+<h2> Automatizar el descubrimiento y monitorización en múltiples redes</h2>
 
 Una vez guardado el script, automatizaremos la tarea con Cron, configurandolo para ejecutar este script periódicamente, por ejemplo cada 60 minutos:
 
