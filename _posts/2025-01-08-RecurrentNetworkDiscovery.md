@@ -18,12 +18,12 @@ Tras un tiempo sin escribir ningún artículo nuevo, volvemos a la carga con uno
 
 Como todos sabemos, supervisar nuestras redes, es una tarea esencial para mantener la seguridad, debiendo de tener en el mapa en todo momento, que nuevos hosts se han conectado a nuestras redes, para así poder prevenir una posible intrusión o movimiento malintencionado y que no se actúen de manera ilegítima en nuestra red, tanto en vía cableada como inalámbrica.
 
-Para ello, implementaremos y configuraremos en nuestro entorno de Kali Linux, OpenVAS y alguna que otra herramienta adicional, dando lugar a automatizar el descubrimiento de hosts, realizando escaneos periódicos y recibiendo notificaciones cuando un nuevo dispositivo se conecta.
+Para ello, implementaremos y configuraremos una serie de herramientas, acompañadas de diversos scripts en bash que nos facilitarán la tarea, en nuestro entorno Kali Linux, dando lugar a la automatización del descubrimiento de hosts, realizando escaneos periódicos y recibiendo notificaciones vía Telegram, cuando un nuevo dispositivo se conecta a cualquiera de las redes que tengamos identificadas.
 
 Los objetivos que queremos conseguir con este proyecto, son los siguientes:
 
 ⧫ **Desarrollar una solución totalmente autónoma para el descubrimiento de hosts en redes previamente identificadas.**
-⧫ **Integrar OpenVAS como motor principal de exploración.**
+⧫ **Integrar Nmap como motor principal de exploración.**
 ⧫ **Garantizar que el sistema notifique los nuevos hosts detectados para una supervisión ágil y eficiente.**
 
 > Todos los scripts que vamos a crear estarán en el PATH /home/username/Tools/periodicNetworkDiscovery
@@ -70,25 +70,6 @@ Añadiremos las redes al fichero creado (una por línea):
 {: .prompt-tip}
 
 
-<h3>Configuración del bot de Telegram para las notificaciones</h3>
-
-En primera instancia, buscamos en Telegram a @BotFather para comenzar con la creación del bot.
-
-Usamos el comando /newbot y seguimos las instrucciones para ponerlo en marcha:
-
-Nombre de bot: NewHostsDiscovered
-Username: hostDiscoveryBot
-
-A continuación, el bot nos dará el TOKEN de la API para poder usarlo.
-
-Con curl, obtendremos el chat_id:
-
-```bash
-curl -s https://api.telegram.org/bot<TU_TOKEN>/getUpdates | jq
-```
-
-Debemos de guardar tanto el chat_id como el API TOKEN, ya que lo utilizaremos más adelante en los scripts que desarrollemos.
-
 <h3>Script para el escaneo inicial</h3>
 
 El siguiente script realizará el primer escaneo de las redes identificadas, guardando los resultados en un fichero, sin necesidad de notificación por parte del Bot recientemente creado.
@@ -129,6 +110,24 @@ Otorgamos al script permisos de ejecución:
 chmod +x /home/waidroc/Tools/periodicNetworkDiscovery/scripts/escaneo_inicial.sh
 ```
 
+<h3>Configuración del bot de Telegram para las notificaciones</h3>
+
+En primera instancia, buscamos en Telegram a @BotFather para comenzar con la creación del bot.
+
+Usamos el comando /newbot y seguimos las instrucciones para ponerlo en marcha:
+
+Nombre de bot: NewHostsDiscovered
+Username: hostDiscoveryBot
+
+A continuación, el bot nos dará el TOKEN de la API para poder usarlo.
+
+Con curl, obtendremos el chat_id:
+
+```bash
+curl -s https://api.telegram.org/bot<TU_TOKEN>/getUpdates | jq
+```
+
+Debemos de guardar tanto el chat_id como el API TOKEN, ya que lo utilizaremos más adelante en los scripts que desarrollemos.
 
 <h3></h3>
 
@@ -206,38 +205,17 @@ done
 
 
 
-<h3>Escaneo de reconocimiento inicial</h3>
+<h3>Script para escaneos periódicos con notificaciones</h3>
 
-Ahora, realizaremos un escaneo inicial a cada una de las redes para así, establecer los hosts conocidos para cada una de las redes. Para ello, nos apoyaremos en el siguiente script, el cual almacenaremos en la ruta /home/username/Tools/periodicNetworkDiscovery/scripts/escaneo_inicial.sh
+El siguiente script está basado en el escaneo de redes con Nmap, comparando los resultados con el archivo histórico. A su vez, notificará por Telegram lo snuevos hosts detectados, agragando los nuevos activos a la lista de dispositivos conocidos si aparecen al menos 3 veces en los respectivos escaneos que vaya realizando.
+
+Creamos el fichero detectar_nuevos_hosts.sh:
 
 ```bash
-#!/bin/bash
-
-# Directorios y configuración
-CONFIG_FILE="../configs/redes_a_monitorizar.txt"
-OUTPUT_DIR="../output/known_hosts"
-LOG_DIR="../output/logs"
-OPENVAS_USER="username"
-OPENVAS_PASS="password"
-
-# Crear directorios si no existen
-mkdir -p $OUTPUT_DIR $LOG_DIR
-
-# Escaneo inicial
-while read -r RED; do
-    echo "Iniciando escaneo para la red: $RED"
-    OUTPUT_FILE="$OUTPUT_DIR/$(echo $RED | tr '/' '_').txt"
-    omp -u $OPENVAS_USER -w $OPENVAS_PASS --target "$RED" --task "descubrimiento-ligero" > "$OUTPUT_FILE"
-    echo "Escaneo completado. Resultados guardados en $OUTPUT_FILE"
-done < "$CONFIG_FILE"
-
-echo "Escaneo inicial completado. Verifica los archivos en $OUTPUT_DIR"
-
+nano /home/waidroc/Tools/periodicNetworkDiscovery/scripts/detectar_nuevos_hosts.sh
 ```
 
-Ejecutamos el script, generando un fichero por cada red en el directorio output/known_hosts
-
-A continuación, escribiremos el script detectar_nuevos_hosts.sh, el cual detectará y notificará nuevos hosts conectados a la red:
+El contenido debe de ser el siguiente:
 
 ```bash
 #!/bin/bash
@@ -245,24 +223,27 @@ A continuación, escribiremos el script detectar_nuevos_hosts.sh, el cual detect
 # Directorios y configuración
 CONFIG_FILE="../configs/redes_a_monitorizar.txt"
 KNOWN_HOSTS_DIR="../output/known_hosts"
+KNOWN_DEVICES_FILE="../output/dispositivos_conocidos.txt"
 LOG_DIR="../output/logs"
-OPENVAS_USER="username"
-OPENVAS_PASS="password"
+BOT_TOKEN="TU_BOT_TOKEN"
+CHAT_ID="TU_CHAT_ID"
 
-# Función para enviar notificaciones
+# Crear directorios y archivo de dispositivos conocidos si no existen
+mkdir -p $KNOWN_HOSTS_DIR $LOG_DIR
+touch $KNOWN_DEVICES_FILE
+
+# Función para enviar notificaciones a Telegram
 send_notification() {
     NUEVOS_HOSTS=$1
-    BOT_TOKEN="TU_TOKEN"
-    CHAT_ID="TU_CHAT_ID"
-    MESSAGE="Se han detectado nuevos hosts en la red:\n\n$NUEVOS_HOSTS"
-
+    MESSAGE="🚨 *Nuevos hosts detectados:*\n\n$NUEVOS_HOSTS"
     if [[ -z "$NUEVOS_HOSTS" ]]; then
-        echo "No se detectaron nuevos hosts."
+        echo "No hay nuevos hosts para notificar."
     else
         curl -s -X POST "https://api.telegram.org/bot$BOT_TOKEN/sendMessage" \
             -d chat_id="$CHAT_ID" \
-            -d text="$MESSAGE"
-        echo "Notificación enviada a Telegram"
+            -d text="$MESSAGE" \
+            -d parse_mode="Markdown"
+        echo "Notificación enviada a Telegram."
     fi
 }
 
@@ -272,24 +253,46 @@ while read -r RED; do
     OUTPUT_FILE="$KNOWN_HOSTS_DIR/$(echo $RED | tr '/' '_').txt"
     TEMP_FILE="$OUTPUT_FILE.tmp"
 
-    # Realizar el escaneo
-    omp -u $OPENVAS_USER -w $OPENVAS_PASS --target "$RED" --task "descubrimiento-ligero" > "$TEMP_FILE"
+    # Realizar escaneo rápido con Nmap
+    nmap -sn "$RED" -oG - | awk '/Up$/{print $2}' > "$TEMP_FILE"
 
     # Comparar resultados con el histórico
     if [[ -f "$OUTPUT_FILE" ]]; then
         NUEVOS_HOSTS=$(comm -13 <(sort "$OUTPUT_FILE") <(sort "$TEMP_FILE"))
-        send_notification "$NUEVOS_HOSTS"
+        if [[ -n "$NUEVOS_HOSTS" ]]; then
+            # Notificar nuevos hosts
+            send_notification "$NUEVOS_HOSTS"
+
+            # Añadir los nuevos hosts al historial
+            echo "$NUEVOS_HOSTS" >> "$OUTPUT_FILE"
+
+            # Contar ocurrencias de cada host y añadir a dispositivos conocidos si aparecen 3+ veces
+            for HOST in $NUEVOS_HOSTS; do
+                COUNT=$(grep -c "$HOST" "$OUTPUT_FILE")
+                if [[ $COUNT -ge 3 ]]; then
+                    if ! grep -q "$HOST" "$KNOWN_DEVICES_FILE"; then
+                        echo "$HOST" >> "$KNOWN_DEVICES_FILE"
+                        echo "Dispositivo conocido añadido: $HOST"
+                    fi
+                fi
+            done
+        fi
     fi
 
     # Actualizar archivo histórico
     mv "$TEMP_FILE" "$OUTPUT_FILE"
 done < "$CONFIG_FILE"
 
-echo "Escaneo completado. Verifica los logs y resultados."
-
+echo "Escaneo completado. Revisa los logs y resultados."
 ```
 
-<h3> Automatizar el descubrimiento y monitorización en múltiples redes** </h3>
+Asignamos permisos de ejecución al script:
+
+```bash
+chmod +x /home/waidroc/Tools/periodicNetworkDiscovery/scripts/detectar_nuevos_hosts.sh
+```
+
+<h3> Automatizar el descubrimiento y monitorización en múltiples redes</h3>
 
 Una vez guardado el script, automatizaremos la tarea con Cron, configurandolo para ejecutar este script periódicamente, por ejemplo cada 60 minutos:
 
@@ -300,11 +303,27 @@ crontab -e
 Agregaremos la línea:
 
 ```bash
-0 * * * * /bin/bash /home/waidroc/Tools/periodicNetworkDiscovery/scripts/detectar_nuevos_hosts.sh >> /home/username/Tools/periodicNetworkDiscovery/output/logs/cron.log 2>&1
+0 * * * * /bin/bash /home/waidroc/Tools/periodicNetworkDiscovery/scripts/detectar_nuevos_hosts.sh >> /home/waidroc/Tools/periodicNetworkDiscovery/output/logs/cron.log 2>&1
 ```
 
 
-<h3>Instalación y configuración de OpenVAS en Kali Linux</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
