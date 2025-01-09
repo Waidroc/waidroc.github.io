@@ -1,5 +1,5 @@
 ---
-title: Descubrimiento de nuevos hosts conectados a una red automáticamente.
+title: Detección automática de hosts desconocidos en nuestra infraestructura.
 date: 2025-01-09 9:00:00
 categories: [Tools, Network]
 tags: [tools, network, discovery, automate, hosts]    
@@ -22,7 +22,7 @@ Tras un tiempo sin escribir ningún artículo nuevo, volvemos a la carga con uno
 
 Como todos sabemos, supervisar nuestras redes, es una tarea esencial para mantener la seguridad de nuestros activos, debiendo de tener en el mapa en todo momento, que nuevos hosts se han conectado a nuestras redes, para así poder prevenir una posible intrusión o movimiento malintencionado y que ningún cibercriminal actúe de manera ilegítima en nuestra red, tanto en vía cableada como inalámbrica.
 
-Para ello, implementaremos y configuraremos una serie de herramientas, acompañadas de diversos scripts en bash, que nos facilitarán la tarea, en nuestro entorno Kali Linux, dando lugar a la automatización del descubrimiento de hosts, realizando escaneos periódicos y recibiendo notificaciones vía Telegram, cuando un nuevo dispositivo se conecta a cualquiera de las redes que tengamos identificadas.
+Para ello, desarrollaremos, implementaremos y configuraremos una herramienta, la cual nos facilitará la tarea, en nuestro entorno Kali Linux, basándose en la automatización del descubrimiento de hosts, realizando escaneos periódicos y recibiendo notificaciones vía Telegram, cuando un nuevo dispositivo se conecta a cualquiera de las redes que tengamos identificadas.
 
 Los objetivos que queremos conseguir con este proyecto, son los siguientes:
 
