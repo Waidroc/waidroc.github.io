@@ -30,7 +30,8 @@ Los objetivos que queremos conseguir con este proyecto, son los siguientes:
 {: .prompt-tip}
 
 ```bash
-mkdir -p /home/<username>/Tools/periodicNetworkDiscovery/{scripts,configs,output/known_hosts,output/logs}
+mkdir -p /home/waidroc/Tools/periodicNetworkDiscovery/{scripts,configs,output/known_hosts,output/logs}
+touch /home/waidroc/Tools/periodicNetworkDiscovery/output/dispositivos_conocidos.txt
 ```
 
 El resultado sería el siguiente:
@@ -39,15 +40,101 @@ El resultado sería el siguiente:
 /home/waidroc/Tools/periodicNetworkDiscovery/
 ├── scripts/                      # Scripts principales
 │   ├── escaneo_inicial.sh        # Realiza el escaneo inicial
-│   └── detectar_nuevos_hosts.sh  # Detecta nuevos hosts
+│   └── detectar_nuevos_hosts.sh  # Escaneos periódicos y notificaciones
 ├── configs/                      # Configuraciones
 │   └── redes_a_monitorizar.txt   # Redes a escanear
 ├── output/                       # Salidas organizadas
 │   ├── known_hosts/              # Hosts conocidos por red
-│   └── logs/                     # Archivos de log
+│   ├── logs/                     # Archivos de log
+│   └── dispositivos_conocidos.txt # Lista consolidada de dispositivos conocidos
 ```
 
-<h3>Instalación y configuración de OpenVas</h3>
+<h3>Configuración de redes a monitorizar</h3>
+
+El siguiente paso, será la creación del fichero redes_a_monitorizar.txt, en el cual identificaremos las redes que disponemos en nuestra infraestructura, para así listar las redes que deseamos monitorizar:
+
+```bash
+nano /home/<username>/Tools/Periodic_Network_Discovery/configs/redes_a_monitorizar.txt
+```
+
+Añadiremos las redes al fichero creado (una por línea):
+
+```bash
+192.168.1.0/24
+10.0.0.0/16
+172.16.0.0/12
+[...]
+```
+
+> Tengamos en cuenta que si queremos añadir una nueva red en el futuro, debemos de incluirla en este fichero.
+{: .prompt-tip}
+
+
+<h3>Configuración del bot de Telegram para las notificaciones</h3>
+
+En primera instancia, buscamos en Telegram a @BotFather para comenzar con la creación del bot.
+
+Usamos el comando /newbot y seguimos las instrucciones para ponerlo en marcha:
+
+Nombre de bot: NewHostsDiscovered
+Username: hostDiscoveryBot
+
+A continuación, el bot nos dará el TOKEN de la API para poder usarlo.
+
+Con curl, obtendremos el chat_id:
+
+```bash
+curl -s https://api.telegram.org/bot<TU_TOKEN>/getUpdates | jq
+```
+
+Debemos de guardar tanto el chat_id como el API TOKEN, ya que lo utilizaremos más adelante en los scripts que desarrollemos.
+
+<h3>Script para el escaneo inicial</h3>
+
+El siguiente script realizará el primer escaneo de las redes identificadas, guardando los resultados en un fichero, sin necesidad de notificación por parte del Bot recientemente creado.
+
+Creación del script escaneo_inicial.sh:
+
+```bash
+nano /home/waidroc/Tools/periodicNetworkDiscovery/scripts/escaneo_inicial.sh
+```
+
+```bash
+#!/bin/bash
+
+# Directorios y configuración
+CONFIG_FILE="../configs/redes_a_monitorizar.txt"
+KNOWN_HOSTS_DIR="../output/known_hosts"
+LOG_DIR="../output/logs"
+OPENVAS_USER="username"
+OPENVAS_PASS="password"
+
+# Crear directorios si no existen
+mkdir -p $KNOWN_HOSTS_DIR $LOG_DIR
+
+# Escaneo inicial
+while read -r RED; do
+    echo "Iniciando escaneo inicial para la red: $RED"
+    OUTPUT_FILE="$KNOWN_HOSTS_DIR/$(echo $RED | tr '/' '_').txt"
+    omp -u $OPENVAS_USER -w $OPENVAS_PASS --target "$RED" --task "descubrimiento-ligero" > "$OUTPUT_FILE"
+    echo "Resultados iniciales guardados en $OUTPUT_FILE"
+done < "$CONFIG_FILE"
+
+echo "Escaneo inicial completado. Verifica los resultados en $KNOWN_HOSTS_DIR"
+```
+
+Otorgamos al script permisos de ejecución:
+
+```bash
+chmod +x /home/waidroc/Tools/periodicNetworkDiscovery/scripts/escaneo_inicial.sh
+```
+
+
+<h3></h3>
+
+
+
+<h3>Instalación y configuración de OpenVAS</h3>
 
 Como siempre, lo primero que debemos de hacer es actualizar nuestro sistema, para así evitar futuros problemas con dependencias:
 
@@ -117,25 +204,7 @@ for file in $NEW_HOSTS_DIR/*; do
 done
 ```
 
-<h3>Configuración de redes a monitorizar</h3>
 
-El siguiente paso, será la creación del fichero redes_a_monitorizar.txt, en el cual identificaremos las redes que disponemos en nuestra infraestructura, para así listar las redes que deseamos monitorizar:
-
-```bash
-nano /home/<username>/Tools/Periodic_Network_Discovery/configs/redes_a_monitorizar.txt
-```
-
-Añadiremos las redes al fichero creado (una por línea):
-
-```bash
-192.168.1.0/24
-10.0.0.0/16
-172.16.0.0/12
-[...]
-```
-
-> Tengamos en cuenta que si queremos añadir una nueva red en el futuro, debemos de incluirla en este fichero.
-{: .prompt-tip}
 
 <h3>Escaneo de reconocimiento inicial</h3>
 
@@ -183,12 +252,17 @@ OPENVAS_PASS="password"
 # Función para enviar notificaciones
 send_notification() {
     NUEVOS_HOSTS=$1
+    BOT_TOKEN="TU_TOKEN"
+    CHAT_ID="TU_CHAT_ID"
+    MESSAGE="Se han detectado nuevos hosts en la red:\n\n$NUEVOS_HOSTS"
+
     if [[ -z "$NUEVOS_HOSTS" ]]; then
         echo "No se detectaron nuevos hosts."
     else
-        echo "ALERTA: Nuevos hosts detectados:"
-        echo "$NUEVOS_HOSTS"
-        # Aquí puedes agregar envío de correo o integración con Slack/Telegram
+        curl -s -X POST "https://api.telegram.org/bot$BOT_TOKEN/sendMessage" \
+            -d chat_id="$CHAT_ID" \
+            -d text="$MESSAGE"
+        echo "Notificación enviada a Telegram"
     fi
 }
 
