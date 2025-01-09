@@ -1,5 +1,5 @@
 ---
-title: Periodic Network Scan
+title: Descubrimiento de nuevos hosts conectados a una red automáticamente.
 date: 2025-01-09 9:00:00
 categories: [Tools, Network]
 tags: [tools, network, discovery, automate, hosts]    
@@ -10,10 +10,37 @@ author: "Waidroc"
 ![Portada](/assets/img/2025-01-09/portada.png)
 
 
-
 <h2> Introducción </h2>
 
-Hola a todos! Antes de comenzar con la resolución de la máquina virtual, me gustaría comentar que dicha máquina pertenece a un taller de ciberseguridad realizado en Junio de 2022 en el instituto IES Pedro Mercedes, teniendo como asistentes cualquier interesado sobre la materia, entre ellos miembros de los cuerpos de Policía Local y Guardia Civil (Equipo @) de Cuenca.
+**¡Hola de nuevo a todxs!**  👋🏻 
+
+Tras un tiempo sin escribir ningún artículo nuevo, volvemos a la carga con uno de perfil técnico bastante interesante, el cuál podéis ir aplicando, siguiendo paso a paso su explicación y demostración.
+
+Como todos sabemos, supervisar nuestras redes, es una tarea esencial para mantener la seguridad, debiendo de tener en el mapa en todo momento, que nuevos hosts se han conectado a nuestras redes, para así poder prevenir una posible intrusión o movimiento malintencionado y que no se actúen de manera ilegítima en nuestra red, tanto en vía cableada como inalámbrica.
+
+Para ello, implementaremos y configuraremos en nuestro entorno de Kali Linux, OpenVAS y alguna que otra herramienta adicional, dando lugar a automatizar el descubrimiento de hosts, realizando escaneos periódicos y recibiendo notificaciones cuando un nuevo dispositivo se conecta. Los pasos que seguiremos serán los siguientes:
+
+**1. Instalación y configuración de OpenVAS en Kali Linux**
+**2. Automatizar el descubrimiento y monitorización en múltiples redes**
+**3. Notificar nuevos hosts basándonos en un escaneo inicial**
+**4. Organizar los scripts y salidas en un entorno estructurado y escalable**
+
+
+> Todos los scripts que vamos a crear estarán en el PATH /home/<username>/Tools/periodicNetworkDiscovery
+{: .prompt-tip}
+
+```bash
+/home/waidroc/Tools/periodicNetworkDiscovery/
+├── scripts/                  # Scripts principales
+│   ├── escaneo_inicial.sh    # Realiza el escaneo inicial
+│   └── detectar_nuevos_hosts.sh # Detecta nuevos hosts
+├── configs/                  # Configuraciones
+│   └── redes_a_monitorear.txt # Redes a escanear
+├── output/                   # Salidas organizadas
+│   ├── known_hosts/          # Hosts conocidos por red
+│   └── logs/                 # Archivos de log
+
+```
 
 ![Cartel](/assets/img/2023-02-17/cartel_taller_ciber.jpg)
 
