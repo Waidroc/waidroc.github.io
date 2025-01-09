@@ -1,8 +1,8 @@
 ---
-title: Writeup - NightCityCTF
-date: 2023-02-05 9:00:00
-categories: [Writeups, NightCityCTF]
-tags: [writeup, ctf, reconocimiento, stego, OSINT]    
+title: Periodic Network Scan
+date: 2025-01-08 9:00:00
+categories: [Tools, Network]
+tags: [tools, network, discovery, automate, hosts]    
 author: "Waidroc"
 ---
 
