@@ -121,21 +121,24 @@ chmod +x /home/waidroc/Tools/periodicNetworkDiscovery/scripts/escaneo_inicial.sh
 
 En primera instancia, buscamos en Telegram a @BotFather para comenzar con la creación del bot.
 
-Usamos el comando /newbot y seguimos las instrucciones para ponerlo en marcha:
+Usamos el comando /start para posteriormente indicarle la creación de un nuevo bot con el comando /newbot y seguimos las instrucciones para ponerlo en marcha:
 
-Nombre de bot: NewHostsDiscovered
-Username: hostDiscoveryBot
+![1](/assets/img/2025-01-09/telegram.png)
 
-A continuación, el bot nos dará el TOKEN de la API para poder usarlo.
+Le indicamos el nombre que le pondremos al bot, seguido del username que nos asignaremos. Una vez creado, nos dara el token que pondremos más adelante en el script
 
-Con curl, obtendremos el chat_id:
+![2](/assets/img/2025-01-09/telegram2.png)
+
+Con el comando curl, obtendremos el chat_id, necesario para el script que escribiremos posteriormente:
 
 ```bash
 curl -s https://api.telegram.org/bot<TU_TOKEN>/getUpdates | jq
 ```
 
-Debemos de guardar tanto el chat_id como el API TOKEN, ya que lo utilizaremos más adelante en los scripts que desarrollemos.
+![3](/assets/img/2025-01-09/telegram.png)
 
+>Debemos de guardar tanto el CHAT_ID como el API TOKEN, ya que lo utilizaremos más adelante en el script de reconocimiento que desarrollemos.
+{: .prompt-danger}
 
 <h2>Script para escaneos periódicos con notificaciones</h2>
 
@@ -227,6 +230,9 @@ Asignamos permisos de ejecución al script:
 chmod +x /home/waidroc/Tools/periodicNetworkDiscovery/scripts/detectar_nuevos_hosts.sh
 ```
 
+Debemos de asignar en las variables API_TOKEN Y CHAT_ID los valores obtenidos en el anterior paso, para que se comunique correctamente con el bot de Telegram y así estar notificados sobre los nuevos hosts que vayan apareciendo en las redes auditadas.
+
+
 <h2> Automatizar el descubrimiento y monitorización en múltiples redes</h2>
 
 Una vez guardado el script, automatizaremos la tarea con Cron, configurandolo para ejecutar este script periódicamente, por ejemplo cada 60 minutos:
@@ -234,21 +240,17 @@ Una vez guardado el script, automatizaremos la tarea con Cron, configurandolo pa
 ```bash
 crontab -e
 ```
-
 Agregaremos la línea:
 
 ```bash
 0 * * * * /bin/bash /home/waidroc/Tools/periodicNetworkDiscovery/scripts/detectar_nuevos_hosts.sh >> /home/waidroc/Tools/periodicNetworkDiscovery/output/logs/cron.log 2>&1
 ```
 
+<h2>Conclusión</h2>
 
+Si hemos seguido los pasos correctamente, dispondremos de una herramienta sencilla pero a su vez bastante potente, la cual nos permitirá tener en el radar todas aquellas máquinas que se conecten a nuestras redes, sin tener que realizar ningún esfuerzo adicional, estando avisados en todo momento de cada movimiento vía Telegram.
 
-
-
-AÑADIR IMAGEN
-![flag](/assets/img/2023-02-17/flag.png)
-
-
+Espero que os haya servido y, como siempre, cualquier duda y petición al respecto, podéis contactar conmigo a través del e-mail waidroc@protonmail.com o vía [`Linkedin`](https://www.linkedin.com/in/alfonso-ca/)
 
 
 `Muchas gracías por leer, Waidroc :)`
