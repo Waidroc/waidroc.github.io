@@ -16,7 +16,7 @@ author: "Waidroc"
 
 Tras un tiempo sin escribir ningún artículo nuevo, volvemos a la carga con uno de perfil técnico bastante interesante, el cuál podéis ir aplicando, siguiendo paso a paso su explicación y demostración.
 
-> Si lo preferís, podéis clonaos directamente el repositorio de Github, conteniendo todos los scripts desarrollados durante la publicación, así como la estructura de directorios del proyecto [`periodicNetworkScanner`](https://github.com/Waidroc/periodicNetworkScanner/)
+> Si lo prefieres, puedes clonarte directamente el repositorio de Github, conteniendo todos los scripts desarrollados durante la publicación, así como la estructura de directorios del proyecto [`periodicNetworkScanner`](https://github.com/Waidroc/periodicNetworkScanner/)
 {: .prompt-tip}
 
 
@@ -35,15 +35,18 @@ Los objetivos que queremos conseguir con este proyecto, son los siguientes:
 > Todos los scripts que vamos a crear estarán en el PATH /home/username/Tools/periodicNetworkDiscovery
 {: .prompt-tip}
 
+>Debemos de tener muy en cuenta durante todo el post, que es de vital importancia cambiar en el PATH /home/username por vuestro nombre de usuario en la máquina en la que estéis realizando el proyecto, ya que si no, no funcionará correctamente. Es muy recomendable intercambiar en todos los scripts la cadena username por la cadena del nombre de vuestro /home.
+{: .prompt-danger}
+
 ```bash
-mkdir -p /home/waidroc/Tools/periodicNetworkDiscovery/{scripts,configs,output/known_hosts,output/logs}
-touch /home/waidroc/Tools/periodicNetworkDiscovery/output/dispositivos_conocidos.txt
+mkdir -p /home/username/Tools/periodicNetworkDiscovery/{scripts,configs,output/known_hosts,output/logs}
+touch /home/username/Tools/periodicNetworkDiscovery/output/dispositivos_conocidos.txt
 ```
 
 El resultado sería el siguiente:
 
 ```bash
-/home/waidroc/Tools/periodicNetworkDiscovery/
+/home/username/Tools/periodicNetworkDiscovery/
 ├── scripts/                      # Scripts principales
 │   ├── escaneo_inicial.sh        # Realiza el escaneo inicial
 │   └── detectar_nuevos_hosts.sh  # Escaneos periódicos y notificaciones
@@ -83,7 +86,7 @@ El siguiente script realizará el primer escaneo de las redes identificadas, gua
 Creación del script escaneo_inicial.sh:
 
 ```bash
-nano /home/waidroc/Tools/periodicNetworkDiscovery/scripts/escaneo_inicial.sh
+nano /home/username/Tools/periodicNetworkDiscovery/scripts/escaneo_inicial.sh
 ```
 
 ```bash
@@ -114,7 +117,7 @@ echo "Escaneo inicial completado. Verifica los resultados en $KNOWN_HOSTS_DIR"
 Otorgamos al script permisos de ejecución:
 
 ```bash
-chmod +x /home/waidroc/Tools/periodicNetworkDiscovery/scripts/escaneo_inicial.sh
+chmod +x /home/username/Tools/periodicNetworkDiscovery/scripts/escaneo_inicial.sh
 ```
 
 <h2>Configuración del bot de Telegram para las notificaciones</h2>
@@ -147,7 +150,7 @@ El siguiente script está basado en el escaneo de redes con Nmap, comparando los
 Creamos el fichero detectar_nuevos_hosts.sh:
 
 ```bash
-nano /home/waidroc/Tools/periodicNetworkDiscovery/scripts/detectar_nuevos_hosts.sh
+nano /home/username/Tools/periodicNetworkDiscovery/scripts/detectar_nuevos_hosts.sh
 ```
 
 El contenido debe de ser el siguiente:
@@ -156,10 +159,10 @@ El contenido debe de ser el siguiente:
 #!/bin/bash
 
 # Directorios y configuración
-CONFIG_FILE="/home/waidroc/Tools/periodicNetworkDiscovery/configs/redes_a_monitorizar.txt"
-KNOWN_HOSTS_DIR="/home/waidroc/Tools/periodicNetworkDiscovery/output/known_hosts"
-KNOWN_DEVICES_FILE="/home/waidroc/Tools/periodicNetworkDiscovery/output/dispositivos_conocidos.txt"
-LOG_DIR="/home/waidroc/Tools/periodicNetworkDiscovery/output/logs"
+CONFIG_FILE="/home/username/Tools/periodicNetworkDiscovery/configs/redes_a_monitorizar.txt"
+KNOWN_HOSTS_DIR="/home/username/Tools/periodicNetworkDiscovery/output/known_hosts"
+KNOWN_DEVICES_FILE="/home/username/Tools/periodicNetworkDiscovery/output/dispositivos_conocidos.txt"
+LOG_DIR="/home/username/Tools/periodicNetworkDiscovery/output/logs"
 BOT_TOKEN="7710350394:AAFX9WI9wXHXaEVUJLlwSzW12WkbJOkfUYg"
 CHAT_ID="6965910510"
 
@@ -227,7 +230,7 @@ echo "Escaneo completado. Revisa los logs y resultados."
 Asignamos permisos de ejecución al script:
 
 ```bash
-chmod +x /home/waidroc/Tools/periodicNetworkDiscovery/scripts/detectar_nuevos_hosts.sh
+chmod +x /home/username/Tools/periodicNetworkDiscovery/scripts/detectar_nuevos_hosts.sh
 ```
 
 Debemos de asignar en las variables API_TOKEN Y CHAT_ID los valores obtenidos en el anterior paso, para que se comunique correctamente con el bot de Telegram y así estar notificados sobre los nuevos hosts que vayan apareciendo en las redes auditadas.
@@ -243,7 +246,7 @@ crontab -e
 Agregaremos la línea:
 
 ```bash
-0 * * * * /bin/bash /home/waidroc/Tools/periodicNetworkDiscovery/scripts/detectar_nuevos_hosts.sh >> /home/waidroc/Tools/periodicNetworkDiscovery/output/logs/cron.log 2>&1
+0 * * * * /bin/bash /home/username/Tools/periodicNetworkDiscovery/scripts/detectar_nuevos_hosts.sh >> /home/username/Tools/periodicNetworkDiscovery/output/logs/cron.log 2>&1
 ```
 
 Teniendo todo operativo y bien implemenado, tendríamos como consecuente notificaciones vía Telegram cada vez que se descubran nuevos activos en nuestras redes de manera 100% automatizada:
