@@ -153,12 +153,12 @@ El contenido debe de ser el siguiente:
 #!/bin/bash
 
 # Directorios y configuración
-CONFIG_FILE="../configs/redes_a_monitorizar.txt"
-KNOWN_HOSTS_DIR="../output/known_hosts"
-KNOWN_DEVICES_FILE="../output/dispositivos_conocidos.txt"
-LOG_DIR="../output/logs"
-BOT_TOKEN="TU_BOT_TOKEN"
-CHAT_ID="TU_CHAT_ID"
+CONFIG_FILE="/home/waidroc/Tools/periodicNetworkDiscovery/configs/redes_a_monitorizar.txt"
+KNOWN_HOSTS_DIR="/home/waidroc/Tools/periodicNetworkDiscovery/output/known_hosts"
+KNOWN_DEVICES_FILE="/home/waidroc/Tools/periodicNetworkDiscovery/output/dispositivos_conocidos.txt"
+LOG_DIR="/home/waidroc/Tools/periodicNetworkDiscovery/output/logs"
+BOT_TOKEN="xxxxxxxxxxxxxxxxxxxxxx"
+CHAT_ID="xxxxxxxxxxxxx"
 
 # Crear directorios y archivo de dispositivos conocidos si no existen
 mkdir -p $KNOWN_HOSTS_DIR $LOG_DIR
@@ -167,7 +167,10 @@ touch $KNOWN_DEVICES_FILE
 # Función para enviar notificaciones a Telegram
 send_notification() {
     NUEVOS_HOSTS=$1
-    MESSAGE="🚨 *Nuevos hosts detectados:*\n\n$NUEVOS_HOSTS"
+    # Reemplazar saltos de línea por espacios para evitar /n/n en Telegram
+    FORMATTED_HOSTS=$(echo "$NUEVOS_HOSTS" | tr '\n' ' ')
+    MESSAGE="🚨 *Nuevos hosts detectados:*\n\n$FORMATTED_HOSTS"
+    
     if [[ -z "$NUEVOS_HOSTS" ]]; then
         echo "No hay nuevos hosts para notificar."
     else
