@@ -19,9 +19,9 @@ Tras un tiempo sin escribir ningún artículo nuevo, volvemos a la carga con uno
 > Si lo prefieres, puedes clonarte directamente el repositorio de Github, conteniendo todos los scripts desarrollados durante la publicación, así como la estructura de directorios del proyecto [`periodicNetworkScanner`](https://github.com/Waidroc/periodicNetworkScanner/)
 {: .prompt-tip}
 
-Como todos sabemos, supervisar nuestras redes, es una tarea esencial para mantener la seguridad de nuestros activos, debiendo de tener en el mapa en todo momento, que nuevos hosts se han conectado a nuestras redes, para así poder prevenir una posible intrusión o movimiento malintencionado y que ningún cibercriminal actúe de manera ilegítima en nuestra red, tanto en vía cableada como inalámbrica.
+Como todos sabemos, supervisar nuestras redes, es una tarea `esencial` para mantener la seguridad de nuestros activos, debiendo de tener en el mapa en todo momento, que nuevos hosts se han conectado a nuestras redes, para así poder prevenir una posible intrusión o movimiento malintencionado y que ningún cibercriminal actúe de manera ilegítima en nuestra red, tanto en vía cableada como inalámbrica.
 
-Para ello, desarrollaremos, implementaremos y configuraremos una herramienta, la cual nos facilitará la tarea, en nuestro entorno Kali Linux, basándose en la automatización del descubrimiento de hosts, realizando escaneos periódicos y recibiendo notificaciones vía Telegram, cuando un nuevo dispositivo se conecta a cualquiera de las redes que tengamos identificadas.
+Para ello, desarrollaremos, implementaremos y configuraremos una herramienta, la cual nos facilitará la tarea, en nuestro entorno Kali Linux, basándose en la automatización del descubrimiento de hosts, realizando escaneos periódicos y recibiendo notificaciones vía `Telegram`, cuando un nuevo dispositivo se conecta a cualquiera de las redes que tengamos identificadas.
 
 Los objetivos que queremos conseguir con este proyecto, son los siguientes:
 
@@ -42,7 +42,7 @@ mkdir -p /home/username/Tools/periodicNetworkDiscovery/{scripts,configs,output/k
 touch /home/username/Tools/periodicNetworkDiscovery/output/dispositivos_conocidos.txt
 ```
 
-El árbol de directorios del proyecto quedaría así:
+El `árbol de directorios` del proyecto quedaría así:
 
 ```bash
 /home/username/Tools/periodicNetworkDiscovery/
@@ -59,7 +59,7 @@ El árbol de directorios del proyecto quedaría así:
 
 <h2>Configuración de redes a monitorizar</h2>
 
-El siguiente paso, será la creación del fichero redes_a_monitorizar.txt, en el cual identificaremos las redes que disponemos en nuestra infraestructura, para así listar las redes que deseamos monitorizar:
+El siguiente paso, será la creación del fichero `redes_a_monitorizar.txt`, en el cual identificaremos las redes que disponemos en nuestra infraestructura, para así listar las redes que deseamos monitorizar:
 
 ```bash
 nano /home/<username>/Tools/Periodic_Network_Discovery/configs/redes_a_monitorizar.txt
@@ -80,9 +80,9 @@ Añadiremos las redes al fichero creado (una por línea):
 
 <h2>Script para el escaneo inicial</h2>
 
-El siguiente script realizará el primer escaneo de las redes identificadas, guardando los resultados en un fichero, sin necesidad de notificación por parte del Bot recientemente creado.
+El siguiente script realizará el primer escaneo de las redes identificadas, guardando los resultados en un fichero llamado `known_hosts`, sin necesidad de notificación por parte del Bot recientemente creado.
 
-Creación del script escaneo_inicial.sh:
+Creación del script `escaneo_inicial.sh`:
 
 ```bash
 nano /home/username/Tools/periodicNetworkDiscovery/scripts/escaneo_inicial.sh
@@ -121,17 +121,17 @@ chmod +x /home/username/Tools/periodicNetworkDiscovery/scripts/escaneo_inicial.s
 
 <h2>Configuración del bot de Telegram para las notificaciones</h2>
 
-En primera instancia, buscamos en Telegram a @BotFather para comenzar con la creación del bot.
+En primera instancia, buscamos en Telegram a `@BotFather` para comenzar con la creación del bot.
 
-Usamos el comando /start para posteriormente indicarle la creación de un nuevo bot con el comando /newbot y seguimos las instrucciones para ponerlo en marcha:
+Usamos el comando `/start` para posteriormente indicarle la creación de un nuevo bot con el comando `/newbot` y seguimos las instrucciones para ponerlo en marcha:
 
 ![1](/assets/img/2025-01-09/telegram.png)
 
-Le indicamos el nombre que le pondremos al bot, seguido del username que nos asignaremos. Una vez creado, nos dara el token que pondremos más adelante en el script
+Le indicamos el `nombre` que le pondremos al bot, seguido del `username` que nos asignaremos. Una vez creado, nos dara el `token` que pondremos más adelante en el script
 
 ![2](/assets/img/2025-01-09/telegram2.png)
 
-Con el comando curl, obtendremos el chat_id, necesario para el script que escribiremos posteriormente:
+Con el comando `curl`, obtendremos el `chat_id`, necesario para el script que escribiremos posteriormente:
 
 ```bash
 curl -s https://api.telegram.org/bot<TU_TOKEN>/getUpdates | jq
@@ -144,9 +144,9 @@ curl -s https://api.telegram.org/bot<TU_TOKEN>/getUpdates | jq
 
 <h2>Script para escaneos periódicos con notificaciones</h2>
 
-El siguiente script está basado en el escaneo de redes con Nmap, comparando los resultados con el archivo histórico. A su vez, notificará por Telegram los nuevos hosts detectados, agragando los nuevos activos a la lista de dispositivos conocidos si aparecen al menos 3 veces en los respectivos escaneos que vaya realizando.
+El siguiente script está basado en el escaneo de redes con Nmap, comparando los resultados con el archivo histórico. A su vez, notificará por `Telegram` los nuevos hosts detectados, agragando los nuevos activos a la lista de dispositivos conocidos si aparecen `al menos 3 veces` en los respectivos escaneos que vaya realizando.
 
-Creamos el fichero detectar_nuevos_hosts.sh:
+Creamos el fichero `detectar_nuevos_hosts.sh`:
 
 ```bash
 nano /home/username/Tools/periodicNetworkDiscovery/scripts/detectar_nuevos_hosts.sh
@@ -232,12 +232,12 @@ Asignamos permisos de ejecución al script:
 chmod +x /home/username/Tools/periodicNetworkDiscovery/scripts/detectar_nuevos_hosts.sh
 ```
 
-Debemos de asignar en las variables API_TOKEN Y CHAT_ID los valores obtenidos en el anterior paso, para que se comunique correctamente con el bot de Telegram y así estar notificados sobre los nuevos hosts que vayan apareciendo en las redes auditadas.
+Debemos de asignar en las variables `API_TOKEN` y `CHAT_ID` los valores obtenidos en el anterior paso, para que se comunique correctamente con el `bot de Telegram` y así estar notificados sobre los nuevos hosts que vayan apareciendo en las redes auditadas.
 
 
 <h2> Automatizar el descubrimiento y monitorización en múltiples redes</h2>
 
-Una vez guardado el script, automatizaremos la tarea con Cron, configurandolo para ejecutar este script periódicamente, por ejemplo cada 60 minutos:
+Una vez guardado el script, automatizaremos la tarea con `Cron`, configurandolo para ejecutar este script periódicamente, por ejemplo cada 60 minutos:
 
 ```bash
 crontab -e
@@ -248,13 +248,13 @@ Agregaremos la línea:
 0 * * * * /bin/bash /home/username/Tools/periodicNetworkDiscovery/scripts/detectar_nuevos_hosts.sh >> /home/username/Tools/periodicNetworkDiscovery/output/logs/cron.log 2>&1
 ```
 
-Teniendo todo operativo y bien implemenado, tendríamos como consecuente notificaciones vía Telegram cada vez que se descubran nuevos activos en nuestras redes de manera 100% automatizada:
+Teniendo todo operativo y bien implemenado, tendríamos como consecuente notificaciones vía Telegram cada vez que se descubran nuevos activos en nuestras redes de manera `100% automatizada`:
 
 ![4](/assets/img/2025-01-09/telegram4.png)
 
 <h2>Conclusión</h2>
 
-Si hemos seguido los pasos correctamente, dispondremos de una herramienta sencilla pero a su vez bastante potente, la cual nos permitirá tener en el radar todas aquellas máquinas que se conecten a nuestras redes, sin tener que realizar ningún esfuerzo adicional, estando avisados en todo momento de cada movimiento vía Telegram.
+Si hemos seguido los pasos correctamente, dispondremos de una herramienta sencilla pero a su vez bastante `potente`, la cual nos permitirá tener en el radar todas aquellas máquinas que se conecten a nuestras redes, sin tener que realizar ningún `esfuerzo adicional`, estando avisados en todo momento de cada movimiento vía Telegram.
 
 Espero que os haya servido y, como siempre, cualquier duda y petición al respecto, podéis contactar conmigo a través del e-mail waidroc@protonmail.com o vía [`Linkedin`](https://www.linkedin.com/in/alfonso-ca/)
 
