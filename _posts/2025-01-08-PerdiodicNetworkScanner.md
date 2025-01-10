@@ -19,7 +19,6 @@ Tras un tiempo sin escribir ningún artículo nuevo, volvemos a la carga con uno
 > Si lo prefieres, puedes clonarte directamente el repositorio de Github, conteniendo todos los scripts desarrollados durante la publicación, así como la estructura de directorios del proyecto [`periodicNetworkScanner`](https://github.com/Waidroc/periodicNetworkScanner/)
 {: .prompt-tip}
 
-
 Como todos sabemos, supervisar nuestras redes, es una tarea esencial para mantener la seguridad de nuestros activos, debiendo de tener en el mapa en todo momento, que nuevos hosts se han conectado a nuestras redes, para así poder prevenir una posible intrusión o movimiento malintencionado y que ningún cibercriminal actúe de manera ilegítima en nuestra red, tanto en vía cableada como inalámbrica.
 
 Para ello, desarrollaremos, implementaremos y configuraremos una herramienta, la cual nos facilitará la tarea, en nuestro entorno Kali Linux, basándose en la automatización del descubrimiento de hosts, realizando escaneos periódicos y recibiendo notificaciones vía Telegram, cuando un nuevo dispositivo se conecta a cualquiera de las redes que tengamos identificadas.
