@@ -1,5 +1,5 @@
 ---
-title: Detección automática de hosts desconocidos en nuestra infraestructura.
+title: Detección automática de hosts desconocidos en nuestra red
 date: 2025-01-09 9:00:00
 categories: [Tools, Network]
 tags: [tools, network, discovery, automate, hosts]    
