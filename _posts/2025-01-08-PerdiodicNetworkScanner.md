@@ -42,7 +42,7 @@ mkdir -p /home/username/Tools/periodicNetworkDiscovery/{scripts,configs,output/k
 touch /home/username/Tools/periodicNetworkDiscovery/output/dispositivos_conocidos.txt
 ```
 
-El resultado sería el siguiente:
+El árbol de directorios del proyecto quedaría así:
 
 ```bash
 /home/username/Tools/periodicNetworkDiscovery/
@@ -144,7 +144,7 @@ curl -s https://api.telegram.org/bot<TU_TOKEN>/getUpdates | jq
 
 <h2>Script para escaneos periódicos con notificaciones</h2>
 
-El siguiente script está basado en el escaneo de redes con Nmap, comparando los resultados con el archivo histórico. A su vez, notificará por Telegram lo snuevos hosts detectados, agragando los nuevos activos a la lista de dispositivos conocidos si aparecen al menos 3 veces en los respectivos escaneos que vaya realizando.
+El siguiente script está basado en el escaneo de redes con Nmap, comparando los resultados con el archivo histórico. A su vez, notificará por Telegram los nuevos hosts detectados, agragando los nuevos activos a la lista de dispositivos conocidos si aparecen al menos 3 veces en los respectivos escaneos que vaya realizando.
 
 Creamos el fichero detectar_nuevos_hosts.sh:
 
