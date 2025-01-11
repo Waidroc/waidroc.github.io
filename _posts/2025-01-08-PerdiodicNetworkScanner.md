@@ -137,7 +137,7 @@ Con el comando `curl`, obtendremos el `chat_id`, necesario para el script que es
 curl -s https://api.telegram.org/bot<TU_TOKEN>/getUpdates | jq
 ```
 
-![3](/assets/img/2025-01-09/telegram.png)
+![3](/assets/img/2025-01-09/telegram3.png)
 
 >Debemos de guardar tanto el CHAT_ID como el API TOKEN, ya que lo utilizaremos más adelante en el script de reconocimiento que desarrollemos.
 {: .prompt-danger}
